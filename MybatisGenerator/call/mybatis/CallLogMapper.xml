@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cecsm.core.mapper.CallLogMapper" >
+    <resultMap id="BaseResultMap" type="com.cecsm.core.entity.CallLog" >
+        <id column="log_id" property="log_id" jdbcType="BIGINT" />
+        <result column="task_id" property="task_id" jdbcType="BIGINT" />
+        <result column="patient_id" property="patient_id" jdbcType="BIGINT" />
+        <result column="seat_id" property="seat_id" jdbcType="BIGINT" />
+        <result column="user_id" property="user_id" jdbcType="BIGINT" />
+        <result column="record_id" property="record_id" jdbcType="VARCHAR" />
+        <result column="call_time" property="call_time" jdbcType="TIMESTAMP" />
+        <result column="mode" property="mode" jdbcType="INTEGER" />
+        <result column="extension" property="extension" jdbcType="VARCHAR" />
+        <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+        <result column="total_duration" property="total_duration" jdbcType="INTEGER" />
+        <result column="call_duration" property="call_duration" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+        <result column="queue" property="queue" jdbcType="VARCHAR" />
+        <result column="agent_id" property="agent_id" jdbcType="VARCHAR" />
+        <result column="level" property="level" jdbcType="VARCHAR" />
+        <result column="queue_wait_time" property="queue_wait_time" jdbcType="VARCHAR" />
+        <result column="queue_duration" property="queue_duration" jdbcType="VARCHAR" />
+        <result column="queue_dest" property="queue_dest" jdbcType="VARCHAR" />
+        <result column="ivr_selection" property="ivr_selection" jdbcType="VARCHAR" />
+        <result column="account_code" property="account_code" jdbcType="VARCHAR" />
+        <result column="is_file" property="is_file" jdbcType="VARCHAR" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        log_id, task_id, patient_id, seat_id, user_id, record_id, call_time, mode, extension, 
+        telephone, total_duration, call_duration, status, url, queue, agent_id, level, queue_wait_time, 
+        queue_duration, queue_dest, ivr_selection, account_code, is_file, create_time, update_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from call_log
+        where log_id = #{log_id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from call_log
+        where log_id = #{log_id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.cecsm.core.entity.CallLog" >
+        insert into call_log (log_id, task_id, patient_id, 
+            seat_id, user_id, record_id, 
+            call_time, mode, extension, 
+            telephone, total_duration, call_duration, 
+            status, url, queue, 
+            agent_id, level, queue_wait_time, 
+            queue_duration, queue_dest, ivr_selection, 
+            account_code, is_file, create_time, 
+            update_time)
+        values (#{log_id,jdbcType=BIGINT}, #{task_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, 
+            #{seat_id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{record_id,jdbcType=VARCHAR}, 
+            #{call_time,jdbcType=TIMESTAMP}, #{mode,jdbcType=INTEGER}, #{extension,jdbcType=VARCHAR}, 
+            #{telephone,jdbcType=VARCHAR}, #{total_duration,jdbcType=INTEGER}, #{call_duration,jdbcType=INTEGER}, 
+            #{status,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{queue,jdbcType=VARCHAR}, 
+            #{agent_id,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{queue_wait_time,jdbcType=VARCHAR}, 
+            #{queue_duration,jdbcType=VARCHAR}, #{queue_dest,jdbcType=VARCHAR}, #{ivr_selection,jdbcType=VARCHAR}, 
+            #{account_code,jdbcType=VARCHAR}, #{is_file,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+            #{update_time,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cecsm.core.entity.CallLog" >
+        insert into call_log
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="log_id != null" >
+                log_id,
+            </if>
+            <if test="task_id != null" >
+                task_id,
+            </if>
+            <if test="patient_id != null" >
+                patient_id,
+            </if>
+            <if test="seat_id != null" >
+                seat_id,
+            </if>
+            <if test="user_id != null" >
+                user_id,
+            </if>
+            <if test="record_id != null" >
+                record_id,
+            </if>
+            <if test="call_time != null" >
+                call_time,
+            </if>
+            <if test="mode != null" >
+                mode,
+            </if>
+            <if test="extension != null" >
+                extension,
+            </if>
+            <if test="telephone != null" >
+                telephone,
+            </if>
+            <if test="total_duration != null" >
+                total_duration,
+            </if>
+            <if test="call_duration != null" >
+                call_duration,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="url != null" >
+                url,
+            </if>
+            <if test="queue != null" >
+                queue,
+            </if>
+            <if test="agent_id != null" >
+                agent_id,
+            </if>
+            <if test="level != null" >
+                level,
+            </if>
+            <if test="queue_wait_time != null" >
+                queue_wait_time,
+            </if>
+            <if test="queue_duration != null" >
+                queue_duration,
+            </if>
+            <if test="queue_dest != null" >
+                queue_dest,
+            </if>
+            <if test="ivr_selection != null" >
+                ivr_selection,
+            </if>
+            <if test="account_code != null" >
+                account_code,
+            </if>
+            <if test="is_file != null" >
+                is_file,
+            </if>
+            <if test="create_time != null" >
+                create_time,
+            </if>
+            <if test="update_time != null" >
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="log_id != null" >
+                #{log_id,jdbcType=BIGINT},
+            </if>
+            <if test="task_id != null" >
+                #{task_id,jdbcType=BIGINT},
+            </if>
+            <if test="patient_id != null" >
+                #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="seat_id != null" >
+                #{seat_id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null" >
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="record_id != null" >
+                #{record_id,jdbcType=VARCHAR},
+            </if>
+            <if test="call_time != null" >
+                #{call_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mode != null" >
+                #{mode,jdbcType=INTEGER},
+            </if>
+            <if test="extension != null" >
+                #{extension,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null" >
+                #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="total_duration != null" >
+                #{total_duration,jdbcType=INTEGER},
+            </if>
+            <if test="call_duration != null" >
+                #{call_duration,jdbcType=INTEGER},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="url != null" >
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="queue != null" >
+                #{queue,jdbcType=VARCHAR},
+            </if>
+            <if test="agent_id != null" >
+                #{agent_id,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null" >
+                #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="queue_wait_time != null" >
+                #{queue_wait_time,jdbcType=VARCHAR},
+            </if>
+            <if test="queue_duration != null" >
+                #{queue_duration,jdbcType=VARCHAR},
+            </if>
+            <if test="queue_dest != null" >
+                #{queue_dest,jdbcType=VARCHAR},
+            </if>
+            <if test="ivr_selection != null" >
+                #{ivr_selection,jdbcType=VARCHAR},
+            </if>
+            <if test="account_code != null" >
+                #{account_code,jdbcType=VARCHAR},
+            </if>
+            <if test="is_file != null" >
+                #{is_file,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null" >
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null" >
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cecsm.core.entity.CallLog" >
+        update call_log
+        <set >
+            <if test="task_id != null" >
+                task_id = #{task_id,jdbcType=BIGINT},
+            </if>
+            <if test="patient_id != null" >
+                patient_id = #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="seat_id != null" >
+                seat_id = #{seat_id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null" >
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="record_id != null" >
+                record_id = #{record_id,jdbcType=VARCHAR},
+            </if>
+            <if test="call_time != null" >
+                call_time = #{call_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mode != null" >
+                mode = #{mode,jdbcType=INTEGER},
+            </if>
+            <if test="extension != null" >
+                extension = #{extension,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null" >
+                telephone = #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="total_duration != null" >
+                total_duration = #{total_duration,jdbcType=INTEGER},
+            </if>
+            <if test="call_duration != null" >
+                call_duration = #{call_duration,jdbcType=INTEGER},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="url != null" >
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="queue != null" >
+                queue = #{queue,jdbcType=VARCHAR},
+            </if>
+            <if test="agent_id != null" >
+                agent_id = #{agent_id,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null" >
+                level = #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="queue_wait_time != null" >
+                queue_wait_time = #{queue_wait_time,jdbcType=VARCHAR},
+            </if>
+            <if test="queue_duration != null" >
+                queue_duration = #{queue_duration,jdbcType=VARCHAR},
+            </if>
+            <if test="queue_dest != null" >
+                queue_dest = #{queue_dest,jdbcType=VARCHAR},
+            </if>
+            <if test="ivr_selection != null" >
+                ivr_selection = #{ivr_selection,jdbcType=VARCHAR},
+            </if>
+            <if test="account_code != null" >
+                account_code = #{account_code,jdbcType=VARCHAR},
+            </if>
+            <if test="is_file != null" >
+                is_file = #{is_file,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null" >
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null" >
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where log_id = #{log_id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cecsm.core.entity.CallLog" >
+        update call_log
+        set task_id = #{task_id,jdbcType=BIGINT},
+            patient_id = #{patient_id,jdbcType=BIGINT},
+            seat_id = #{seat_id,jdbcType=BIGINT},
+            user_id = #{user_id,jdbcType=BIGINT},
+            record_id = #{record_id,jdbcType=VARCHAR},
+            call_time = #{call_time,jdbcType=TIMESTAMP},
+            mode = #{mode,jdbcType=INTEGER},
+            extension = #{extension,jdbcType=VARCHAR},
+            telephone = #{telephone,jdbcType=VARCHAR},
+            total_duration = #{total_duration,jdbcType=INTEGER},
+            call_duration = #{call_duration,jdbcType=INTEGER},
+            status = #{status,jdbcType=INTEGER},
+            url = #{url,jdbcType=VARCHAR},
+            queue = #{queue,jdbcType=VARCHAR},
+            agent_id = #{agent_id,jdbcType=VARCHAR},
+            level = #{level,jdbcType=VARCHAR},
+            queue_wait_time = #{queue_wait_time,jdbcType=VARCHAR},
+            queue_duration = #{queue_duration,jdbcType=VARCHAR},
+            queue_dest = #{queue_dest,jdbcType=VARCHAR},
+            ivr_selection = #{ivr_selection,jdbcType=VARCHAR},
+            account_code = #{account_code,jdbcType=VARCHAR},
+            is_file = #{is_file,jdbcType=VARCHAR},
+            create_time = #{create_time,jdbcType=TIMESTAMP},
+            update_time = #{update_time,jdbcType=TIMESTAMP}
+        where log_id = #{log_id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

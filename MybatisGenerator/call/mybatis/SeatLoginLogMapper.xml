@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cecsm.core.mapper.SeatLoginLogMapper" >
+    <resultMap id="BaseResultMap" type="com.cecsm.core.entity.SeatLoginLog" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_id" property="user_id" jdbcType="BIGINT" />
+        <result column="seat_id" property="seat_id" jdbcType="BIGINT" />
+        <result column="login_time" property="login_time" jdbcType="TIMESTAMP" />
+        <result column="logout_time" property="logout_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, user_id, seat_id, login_time, logout_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from seat_login_log
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from seat_login_log
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.cecsm.core.entity.SeatLoginLog" >
+        insert into seat_login_log (id, user_id, seat_id, 
+            login_time, logout_time)
+        values (#{id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT}, #{seat_id,jdbcType=BIGINT}, 
+            #{login_time,jdbcType=TIMESTAMP}, #{logout_time,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cecsm.core.entity.SeatLoginLog" >
+        insert into seat_login_log
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="user_id != null" >
+                user_id,
+            </if>
+            <if test="seat_id != null" >
+                seat_id,
+            </if>
+            <if test="login_time != null" >
+                login_time,
+            </if>
+            <if test="logout_time != null" >
+                logout_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null" >
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="seat_id != null" >
+                #{seat_id,jdbcType=BIGINT},
+            </if>
+            <if test="login_time != null" >
+                #{login_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="logout_time != null" >
+                #{logout_time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cecsm.core.entity.SeatLoginLog" >
+        update seat_login_log
+        <set >
+            <if test="user_id != null" >
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="seat_id != null" >
+                seat_id = #{seat_id,jdbcType=BIGINT},
+            </if>
+            <if test="login_time != null" >
+                login_time = #{login_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="logout_time != null" >
+                logout_time = #{logout_time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cecsm.core.entity.SeatLoginLog" >
+        update seat_login_log
+        set user_id = #{user_id,jdbcType=BIGINT},
+            seat_id = #{seat_id,jdbcType=BIGINT},
+            login_time = #{login_time,jdbcType=TIMESTAMP},
+            logout_time = #{logout_time,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

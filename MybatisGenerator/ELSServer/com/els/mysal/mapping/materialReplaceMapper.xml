@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.els.dao.materialReplaceMapper" >
+    <resultMap id="BaseResultMap" type="com.els.vo.materialReplace" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="elsAccount" property="elsAccount" jdbcType="VARCHAR" />
+        <result column="replaceGroup" property="replaceGroup" jdbcType="VARCHAR" />
+        <result column="replaceName" property="replaceName" jdbcType="VARCHAR" />
+        <result column="materialNumber" property="materialNumber" jdbcType="VARCHAR" />
+        <result column="materialName" property="materialName" jdbcType="VARCHAR" />
+        <result column="materialDesc" property="materialDesc" jdbcType="VARCHAR" />
+        <result column="materialGroup" property="materialGroup" jdbcType="VARCHAR" />
+        <result column="fbk1" property="fbk1" jdbcType="VARCHAR" />
+        <result column="fbk2" property="fbk2" jdbcType="VARCHAR" />
+        <result column="fbk3" property="fbk3" jdbcType="VARCHAR" />
+        <result column="fbk4" property="fbk4" jdbcType="VARCHAR" />
+        <result column="fbk5" property="fbk5" jdbcType="VARCHAR" />
+        <result column="fbk6" property="fbk6" jdbcType="VARCHAR" />
+        <result column="fbk7" property="fbk7" jdbcType="VARCHAR" />
+        <result column="fbk8" property="fbk8" jdbcType="VARCHAR" />
+        <result column="fbk9" property="fbk9" jdbcType="VARCHAR" />
+        <result column="fbk10" property="fbk10" jdbcType="VARCHAR" />
+        <result column="fbk11" property="fbk11" jdbcType="VARCHAR" />
+        <result column="fbk12" property="fbk12" jdbcType="VARCHAR" />
+        <result column="fbk13" property="fbk13" jdbcType="VARCHAR" />
+        <result column="fbk14" property="fbk14" jdbcType="VARCHAR" />
+        <result column="fbk15" property="fbk15" jdbcType="VARCHAR" />
+        <result column="fbk16" property="fbk16" jdbcType="VARCHAR" />
+        <result column="fbk17" property="fbk17" jdbcType="VARCHAR" />
+        <result column="fbk18" property="fbk18" jdbcType="VARCHAR" />
+        <result column="fbk19" property="fbk19" jdbcType="VARCHAR" />
+        <result column="fbk20" property="fbk20" jdbcType="VARCHAR" />
+        <result column="createUser" property="createUser" jdbcType="VARCHAR" />
+        <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="lastUpdateUser" property="lastUpdateUser" jdbcType="VARCHAR" />
+        <result column="lastUpdateDate" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="version" property="version" jdbcType="INTEGER" />
+        <result column="extendFields" property="extendFields" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, elsAccount, replaceGroup, replaceName, materialNumber, materialName, materialDesc, 
+        materialGroup, fbk1, fbk2, fbk3, fbk4, fbk5, fbk6, fbk7, fbk8, fbk9, fbk10, fbk11, 
+        fbk12, fbk13, fbk14, fbk15, fbk16, fbk17, fbk18, fbk19, fbk20, createUser, createDate, 
+        lastUpdateUser, lastUpdateDate, remark, version, extendFields
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from material_replace
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from material_replace
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.els.vo.materialReplace" >
+        insert into material_replace (id, elsAccount, replaceGroup, 
+            replaceName, materialNumber, materialName, 
+            materialDesc, materialGroup, fbk1, 
+            fbk2, fbk3, fbk4, 
+            fbk5, fbk6, fbk7, 
+            fbk8, fbk9, fbk10, 
+            fbk11, fbk12, fbk13, 
+            fbk14, fbk15, fbk16, 
+            fbk17, fbk18, fbk19, 
+            fbk20, createUser, createDate, 
+            lastUpdateUser, lastUpdateDate, remark, 
+            version, extendFields)
+        values (#{id,jdbcType=BIGINT}, #{elsAccount,jdbcType=VARCHAR}, #{replaceGroup,jdbcType=VARCHAR}, 
+            #{replaceName,jdbcType=VARCHAR}, #{materialNumber,jdbcType=VARCHAR}, #{materialName,jdbcType=VARCHAR}, 
+            #{materialDesc,jdbcType=VARCHAR}, #{materialGroup,jdbcType=VARCHAR}, #{fbk1,jdbcType=VARCHAR}, 
+            #{fbk2,jdbcType=VARCHAR}, #{fbk3,jdbcType=VARCHAR}, #{fbk4,jdbcType=VARCHAR}, 
+            #{fbk5,jdbcType=VARCHAR}, #{fbk6,jdbcType=VARCHAR}, #{fbk7,jdbcType=VARCHAR}, 
+            #{fbk8,jdbcType=VARCHAR}, #{fbk9,jdbcType=VARCHAR}, #{fbk10,jdbcType=VARCHAR}, 
+            #{fbk11,jdbcType=VARCHAR}, #{fbk12,jdbcType=VARCHAR}, #{fbk13,jdbcType=VARCHAR}, 
+            #{fbk14,jdbcType=VARCHAR}, #{fbk15,jdbcType=VARCHAR}, #{fbk16,jdbcType=VARCHAR}, 
+            #{fbk17,jdbcType=VARCHAR}, #{fbk18,jdbcType=VARCHAR}, #{fbk19,jdbcType=VARCHAR}, 
+            #{fbk20,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+            #{lastUpdateUser,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+            #{version,jdbcType=INTEGER}, #{extendFields,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.els.vo.materialReplace" >
+        insert into material_replace
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="elsAccount != null" >
+                elsAccount,
+            </if>
+            <if test="replaceGroup != null" >
+                replaceGroup,
+            </if>
+            <if test="replaceName != null" >
+                replaceName,
+            </if>
+            <if test="materialNumber != null" >
+                materialNumber,
+            </if>
+            <if test="materialName != null" >
+                materialName,
+            </if>
+            <if test="materialDesc != null" >
+                materialDesc,
+            </if>
+            <if test="materialGroup != null" >
+                materialGroup,
+            </if>
+            <if test="fbk1 != null" >
+                fbk1,
+            </if>
+            <if test="fbk2 != null" >
+                fbk2,
+            </if>
+            <if test="fbk3 != null" >
+                fbk3,
+            </if>
+            <if test="fbk4 != null" >
+                fbk4,
+            </if>
+            <if test="fbk5 != null" >
+                fbk5,
+            </if>
+            <if test="fbk6 != null" >
+                fbk6,
+            </if>
+            <if test="fbk7 != null" >
+                fbk7,
+            </if>
+            <if test="fbk8 != null" >
+                fbk8,
+            </if>
+            <if test="fbk9 != null" >
+                fbk9,
+            </if>
+            <if test="fbk10 != null" >
+                fbk10,
+            </if>
+            <if test="fbk11 != null" >
+                fbk11,
+            </if>
+            <if test="fbk12 != null" >
+                fbk12,
+            </if>
+            <if test="fbk13 != null" >
+                fbk13,
+            </if>
+            <if test="fbk14 != null" >
+                fbk14,
+            </if>
+            <if test="fbk15 != null" >
+                fbk15,
+            </if>
+            <if test="fbk16 != null" >
+                fbk16,
+            </if>
+            <if test="fbk17 != null" >
+                fbk17,
+            </if>
+            <if test="fbk18 != null" >
+                fbk18,
+            </if>
+            <if test="fbk19 != null" >
+                fbk19,
+            </if>
+            <if test="fbk20 != null" >
+                fbk20,
+            </if>
+            <if test="createUser != null" >
+                createUser,
+            </if>
+            <if test="createDate != null" >
+                createDate,
+            </if>
+            <if test="lastUpdateUser != null" >
+                lastUpdateUser,
+            </if>
+            <if test="lastUpdateDate != null" >
+                lastUpdateDate,
+            </if>
+            <if test="remark != null" >
+                remark,
+            </if>
+            <if test="version != null" >
+                version,
+            </if>
+            <if test="extendFields != null" >
+                extendFields,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="elsAccount != null" >
+                #{elsAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="replaceGroup != null" >
+                #{replaceGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="replaceName != null" >
+                #{replaceName,jdbcType=VARCHAR},
+            </if>
+            <if test="materialNumber != null" >
+                #{materialNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="materialName != null" >
+                #{materialName,jdbcType=VARCHAR},
+            </if>
+            <if test="materialDesc != null" >
+                #{materialDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="materialGroup != null" >
+                #{materialGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk1 != null" >
+                #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                #{fbk5,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk6 != null" >
+                #{fbk6,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk7 != null" >
+                #{fbk7,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk8 != null" >
+                #{fbk8,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk9 != null" >
+                #{fbk9,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk10 != null" >
+                #{fbk10,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk11 != null" >
+                #{fbk11,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk12 != null" >
+                #{fbk12,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk13 != null" >
+                #{fbk13,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk14 != null" >
+                #{fbk14,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk15 != null" >
+                #{fbk15,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk16 != null" >
+                #{fbk16,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk17 != null" >
+                #{fbk17,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk18 != null" >
+                #{fbk18,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk19 != null" >
+                #{fbk19,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk20 != null" >
+                #{fbk20,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUser != null" >
+                #{lastUpdateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null" >
+                #{lastUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null" >
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null" >
+                #{version,jdbcType=INTEGER},
+            </if>
+            <if test="extendFields != null" >
+                #{extendFields,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.els.vo.materialReplace" >
+        update material_replace
+        <set >
+            <if test="elsAccount != null" >
+                elsAccount = #{elsAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="replaceGroup != null" >
+                replaceGroup = #{replaceGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="replaceName != null" >
+                replaceName = #{replaceName,jdbcType=VARCHAR},
+            </if>
+            <if test="materialNumber != null" >
+                materialNumber = #{materialNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="materialName != null" >
+                materialName = #{materialName,jdbcType=VARCHAR},
+            </if>
+            <if test="materialDesc != null" >
+                materialDesc = #{materialDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="materialGroup != null" >
+                materialGroup = #{materialGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk1 != null" >
+                fbk1 = #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                fbk2 = #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                fbk3 = #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                fbk4 = #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                fbk5 = #{fbk5,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk6 != null" >
+                fbk6 = #{fbk6,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk7 != null" >
+                fbk7 = #{fbk7,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk8 != null" >
+                fbk8 = #{fbk8,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk9 != null" >
+                fbk9 = #{fbk9,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk10 != null" >
+                fbk10 = #{fbk10,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk11 != null" >
+                fbk11 = #{fbk11,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk12 != null" >
+                fbk12 = #{fbk12,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk13 != null" >
+                fbk13 = #{fbk13,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk14 != null" >
+                fbk14 = #{fbk14,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk15 != null" >
+                fbk15 = #{fbk15,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk16 != null" >
+                fbk16 = #{fbk16,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk17 != null" >
+                fbk17 = #{fbk17,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk18 != null" >
+                fbk18 = #{fbk18,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk19 != null" >
+                fbk19 = #{fbk19,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk20 != null" >
+                fbk20 = #{fbk20,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                createUser = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                createDate = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUser != null" >
+                lastUpdateUser = #{lastUpdateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null" >
+                lastUpdateDate = #{lastUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null" >
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null" >
+                version = #{version,jdbcType=INTEGER},
+            </if>
+            <if test="extendFields != null" >
+                extendFields = #{extendFields,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.els.vo.materialReplace" >
+        update material_replace
+        set elsAccount = #{elsAccount,jdbcType=VARCHAR},
+            replaceGroup = #{replaceGroup,jdbcType=VARCHAR},
+            replaceName = #{replaceName,jdbcType=VARCHAR},
+            materialNumber = #{materialNumber,jdbcType=VARCHAR},
+            materialName = #{materialName,jdbcType=VARCHAR},
+            materialDesc = #{materialDesc,jdbcType=VARCHAR},
+            materialGroup = #{materialGroup,jdbcType=VARCHAR},
+            fbk1 = #{fbk1,jdbcType=VARCHAR},
+            fbk2 = #{fbk2,jdbcType=VARCHAR},
+            fbk3 = #{fbk3,jdbcType=VARCHAR},
+            fbk4 = #{fbk4,jdbcType=VARCHAR},
+            fbk5 = #{fbk5,jdbcType=VARCHAR},
+            fbk6 = #{fbk6,jdbcType=VARCHAR},
+            fbk7 = #{fbk7,jdbcType=VARCHAR},
+            fbk8 = #{fbk8,jdbcType=VARCHAR},
+            fbk9 = #{fbk9,jdbcType=VARCHAR},
+            fbk10 = #{fbk10,jdbcType=VARCHAR},
+            fbk11 = #{fbk11,jdbcType=VARCHAR},
+            fbk12 = #{fbk12,jdbcType=VARCHAR},
+            fbk13 = #{fbk13,jdbcType=VARCHAR},
+            fbk14 = #{fbk14,jdbcType=VARCHAR},
+            fbk15 = #{fbk15,jdbcType=VARCHAR},
+            fbk16 = #{fbk16,jdbcType=VARCHAR},
+            fbk17 = #{fbk17,jdbcType=VARCHAR},
+            fbk18 = #{fbk18,jdbcType=VARCHAR},
+            fbk19 = #{fbk19,jdbcType=VARCHAR},
+            fbk20 = #{fbk20,jdbcType=VARCHAR},
+            createUser = #{createUser,jdbcType=VARCHAR},
+            createDate = #{createDate,jdbcType=TIMESTAMP},
+            lastUpdateUser = #{lastUpdateUser,jdbcType=VARCHAR},
+            lastUpdateDate = #{lastUpdateDate,jdbcType=TIMESTAMP},
+            remark = #{remark,jdbcType=VARCHAR},
+            version = #{version,jdbcType=INTEGER},
+            extendFields = #{extendFields,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

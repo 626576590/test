@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.els.common.dao.ElsJkFunImportMapper" >
+    <resultMap id="BaseResultMap" type="com.els.common.vo.ElsJkFunImport" >
+        <id column="JK_ID" property="jkId" jdbcType="VARCHAR" />
+        <id column="FUN_PARAM" property="funParam" jdbcType="VARCHAR" />
+        <result column="FUN_PARAM_TYPE" property="funParamType" jdbcType="VARCHAR" />
+        <result column="FUN_PARAM_INPUTNAME" property="funParamInputname" jdbcType="VARCHAR" />
+        <result column="FUN_PARAM_DEFAULT" property="funParamDefault" jdbcType="VARCHAR" />
+        <result column="VALUE_TYPE" property="valueType" jdbcType="VARCHAR" />
+        <result column="SPECIAL_TYPE" property="specialType" jdbcType="VARCHAR" />
+        <result column="EXPRESSION" property="expression" jdbcType="VARCHAR" />
+        <result column="FBK1" property="fbk1" jdbcType="VARCHAR" />
+        <result column="FBK2" property="fbk2" jdbcType="VARCHAR" />
+        <result column="FBK3" property="fbk3" jdbcType="VARCHAR" />
+        <result column="FBK4" property="fbk4" jdbcType="VARCHAR" />
+        <result column="FBK5" property="fbk5" jdbcType="VARCHAR" />
+        <result column="FBK6" property="fbk6" jdbcType="VARCHAR" />
+        <result column="FBK7" property="fbk7" jdbcType="VARCHAR" />
+        <result column="FBK8" property="fbk8" jdbcType="VARCHAR" />
+        <result column="FBK9" property="fbk9" jdbcType="VARCHAR" />
+        <result column="FBK10" property="fbk10" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        JK_ID, FUN_PARAM, FUN_PARAM_TYPE, FUN_PARAM_INPUTNAME, FUN_PARAM_DEFAULT, VALUE_TYPE, 
+        SPECIAL_TYPE, EXPRESSION, FBK1, FBK2, FBK3, FBK4, FBK5, FBK6, FBK7, FBK8, FBK9, FBK10
+    </sql>
+
+    <insert id="insertSelective" parameterType="com.els.common.vo.ElsJkFunImport" >
+        insert into ELS_JK_FUN_IMPORT
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="jkId != null" >
+                JK_ID,
+            </if>
+            <if test="funParam != null" >
+                FUN_PARAM,
+            </if>
+            <if test="funParamType != null" >
+                FUN_PARAM_TYPE,
+            </if>
+            <if test="funParamInputname != null" >
+                FUN_PARAM_INPUTNAME,
+            </if>
+            <if test="funParamDefault != null" >
+                FUN_PARAM_DEFAULT,
+            </if>
+            <if test="valueType != null" >
+                VALUE_TYPE,
+            </if>
+            <if test="specialType != null" >
+                SPECIAL_TYPE,
+            </if>
+            <if test="expression != null" >
+                EXPRESSION,
+            </if>
+            <if test="fbk1 != null" >
+                FBK1,
+            </if>
+            <if test="fbk2 != null" >
+                FBK2,
+            </if>
+            <if test="fbk3 != null" >
+                FBK3,
+            </if>
+            <if test="fbk4 != null" >
+                FBK4,
+            </if>
+            <if test="fbk5 != null" >
+                FBK5,
+            </if>
+            <if test="fbk6 != null" >
+                FBK6,
+            </if>
+            <if test="fbk7 != null" >
+                FBK7,
+            </if>
+            <if test="fbk8 != null" >
+                FBK8,
+            </if>
+            <if test="fbk9 != null" >
+                FBK9,
+            </if>
+            <if test="fbk10 != null" >
+                FBK10,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="jkId != null" >
+                #{jkId,jdbcType=VARCHAR},
+            </if>
+            <if test="funParam != null" >
+                #{funParam,jdbcType=VARCHAR},
+            </if>
+            <if test="funParamType != null" >
+                #{funParamType,jdbcType=VARCHAR},
+            </if>
+            <if test="funParamInputname != null" >
+                #{funParamInputname,jdbcType=VARCHAR},
+            </if>
+            <if test="funParamDefault != null" >
+                #{funParamDefault,jdbcType=VARCHAR},
+            </if>
+            <if test="valueType != null" >
+                #{valueType,jdbcType=VARCHAR},
+            </if>
+            <if test="specialType != null" >
+                #{specialType,jdbcType=VARCHAR},
+            </if>
+            <if test="expression != null" >
+                #{expression,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk1 != null" >
+                #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                #{fbk5,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk6 != null" >
+                #{fbk6,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk7 != null" >
+                #{fbk7,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk8 != null" >
+                #{fbk8,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk9 != null" >
+                #{fbk9,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk10 != null" >
+                #{fbk10,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.els.common.vo.ElsJkFunImport" >
+        update ELS_JK_FUN_IMPORT
+        <set >
+            <if test="funParamType != null" >
+                FUN_PARAM_TYPE = #{funParamType,jdbcType=VARCHAR},
+            </if>
+            <if test="funParamInputname != null" >
+                FUN_PARAM_INPUTNAME = #{funParamInputname,jdbcType=VARCHAR},
+            </if>
+            <if test="funParamDefault != null" >
+                FUN_PARAM_DEFAULT = #{funParamDefault,jdbcType=VARCHAR},
+            </if>
+            <if test="valueType != null" >
+                VALUE_TYPE = #{valueType,jdbcType=VARCHAR},
+            </if>
+            <if test="specialType != null" >
+                SPECIAL_TYPE = #{specialType,jdbcType=VARCHAR},
+            </if>
+            <if test="expression != null" >
+                EXPRESSION = #{expression,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk1 != null" >
+                FBK1 = #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                FBK2 = #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                FBK3 = #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                FBK4 = #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                FBK5 = #{fbk5,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk6 != null" >
+                FBK6 = #{fbk6,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk7 != null" >
+                FBK7 = #{fbk7,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk8 != null" >
+                FBK8 = #{fbk8,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk9 != null" >
+                FBK9 = #{fbk9,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk10 != null" >
+                FBK10 = #{fbk10,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where JK_ID = #{jkId,jdbcType=VARCHAR}
+          and FUN_PARAM = #{funParam,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

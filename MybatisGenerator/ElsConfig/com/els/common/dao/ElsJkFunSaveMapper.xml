@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.els.common.dao.ElsJkFunSaveMapper" >
+    <resultMap id="BaseResultMap" type="com.els.common.vo.ElsJkFunSave" >
+        <id column="JK_ID" property="jkId" jdbcType="VARCHAR" />
+        <id column="SAVE_TABLE" property="saveTable" jdbcType="VARCHAR" />
+        <result column="FBK1" property="fbk1" jdbcType="VARCHAR" />
+        <result column="FBK2" property="fbk2" jdbcType="VARCHAR" />
+        <result column="FBK3" property="fbk3" jdbcType="VARCHAR" />
+        <result column="FBK4" property="fbk4" jdbcType="VARCHAR" />
+        <result column="FBK5" property="fbk5" jdbcType="VARCHAR" />
+        <result column="FBK6" property="fbk6" jdbcType="VARCHAR" />
+        <result column="FBK7" property="fbk7" jdbcType="VARCHAR" />
+        <result column="FBK8" property="fbk8" jdbcType="VARCHAR" />
+        <result column="FBK9" property="fbk9" jdbcType="VARCHAR" />
+        <result column="FBK10" property="fbk10" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        JK_ID, SAVE_TABLE, FBK1, FBK2, FBK3, FBK4, FBK5, FBK6, FBK7, FBK8, FBK9, FBK10
+    </sql>
+
+    <insert id="insertSelective" parameterType="com.els.common.vo.ElsJkFunSave" >
+        insert into ELS_JK_FUN_SAVE
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="jkId != null" >
+                JK_ID,
+            </if>
+            <if test="saveTable != null" >
+                SAVE_TABLE,
+            </if>
+            <if test="fbk1 != null" >
+                FBK1,
+            </if>
+            <if test="fbk2 != null" >
+                FBK2,
+            </if>
+            <if test="fbk3 != null" >
+                FBK3,
+            </if>
+            <if test="fbk4 != null" >
+                FBK4,
+            </if>
+            <if test="fbk5 != null" >
+                FBK5,
+            </if>
+            <if test="fbk6 != null" >
+                FBK6,
+            </if>
+            <if test="fbk7 != null" >
+                FBK7,
+            </if>
+            <if test="fbk8 != null" >
+                FBK8,
+            </if>
+            <if test="fbk9 != null" >
+                FBK9,
+            </if>
+            <if test="fbk10 != null" >
+                FBK10,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="jkId != null" >
+                #{jkId,jdbcType=VARCHAR},
+            </if>
+            <if test="saveTable != null" >
+                #{saveTable,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk1 != null" >
+                #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                #{fbk5,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk6 != null" >
+                #{fbk6,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk7 != null" >
+                #{fbk7,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk8 != null" >
+                #{fbk8,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk9 != null" >
+                #{fbk9,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk10 != null" >
+                #{fbk10,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.els.common.vo.ElsJkFunSave" >
+        update ELS_JK_FUN_SAVE
+        <set >
+            <if test="fbk1 != null" >
+                FBK1 = #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                FBK2 = #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                FBK3 = #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                FBK4 = #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                FBK5 = #{fbk5,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk6 != null" >
+                FBK6 = #{fbk6,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk7 != null" >
+                FBK7 = #{fbk7,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk8 != null" >
+                FBK8 = #{fbk8,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk9 != null" >
+                FBK9 = #{fbk9,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk10 != null" >
+                FBK10 = #{fbk10,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where JK_ID = #{jkId,jdbcType=VARCHAR}
+          and SAVE_TABLE = #{saveTable,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

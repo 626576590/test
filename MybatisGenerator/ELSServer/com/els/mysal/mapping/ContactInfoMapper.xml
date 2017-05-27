@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.els.dao.ContactInfoMapper" >
+    <resultMap id="BaseResultMap" type="com.els.vo.ContactInfo" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="elsAccount" property="elsAccount" jdbcType="VARCHAR" />
+        <result column="isPublic" property="isPublic" jdbcType="VARCHAR" />
+        <result column="isSale" property="isSale" jdbcType="VARCHAR" />
+        <result column="isFinance" property="isFinance" jdbcType="VARCHAR" />
+        <result column="isEnterprise" property="isEnterprise" jdbcType="VARCHAR" />
+        <result column="salePerson" property="salePerson" jdbcType="VARCHAR" />
+        <result column="saleMobile" property="saleMobile" jdbcType="VARCHAR" />
+        <result column="saleMail" property="saleMail" jdbcType="VARCHAR" />
+        <result column="financePerson" property="financePerson" jdbcType="VARCHAR" />
+        <result column="financeMobile" property="financeMobile" jdbcType="VARCHAR" />
+        <result column="financeMail" property="financeMail" jdbcType="VARCHAR" />
+        <result column="enterprisePerson" property="enterprisePerson" jdbcType="VARCHAR" />
+        <result column="enterpriseMobile" property="enterpriseMobile" jdbcType="VARCHAR" />
+        <result column="enterpriseMail" property="enterpriseMail" jdbcType="VARCHAR" />
+        <result column="createUser" property="createUser" jdbcType="VARCHAR" />
+        <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="lastUpdateUser" property="lastUpdateUser" jdbcType="VARCHAR" />
+        <result column="lastUpdateDate" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+        <result column="fbk1" property="fbk1" jdbcType="VARCHAR" />
+        <result column="fbk2" property="fbk2" jdbcType="VARCHAR" />
+        <result column="fbk3" property="fbk3" jdbcType="VARCHAR" />
+        <result column="fbk4" property="fbk4" jdbcType="VARCHAR" />
+        <result column="fbk5" property="fbk5" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, elsAccount, isPublic, isSale, isFinance, isEnterprise, salePerson, saleMobile, 
+        saleMail, financePerson, financeMobile, financeMail, enterprisePerson, enterpriseMobile, 
+        enterpriseMail, createUser, createDate, lastUpdateUser, lastUpdateDate, fbk1, fbk2, 
+        fbk3, fbk4, fbk5
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from els_contact_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from els_contact_info
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.els.vo.ContactInfo" >
+        insert into els_contact_info (id, elsAccount, isPublic, 
+            isSale, isFinance, isEnterprise, 
+            salePerson, saleMobile, saleMail, 
+            financePerson, financeMobile, financeMail, 
+            enterprisePerson, enterpriseMobile, enterpriseMail, 
+            createUser, createDate, lastUpdateUser, 
+            lastUpdateDate, fbk1, fbk2, 
+            fbk3, fbk4, fbk5)
+        values (#{id,jdbcType=BIGINT}, #{elsAccount,jdbcType=VARCHAR}, #{isPublic,jdbcType=VARCHAR}, 
+            #{isSale,jdbcType=VARCHAR}, #{isFinance,jdbcType=VARCHAR}, #{isEnterprise,jdbcType=VARCHAR}, 
+            #{salePerson,jdbcType=VARCHAR}, #{saleMobile,jdbcType=VARCHAR}, #{saleMail,jdbcType=VARCHAR}, 
+            #{financePerson,jdbcType=VARCHAR}, #{financeMobile,jdbcType=VARCHAR}, #{financeMail,jdbcType=VARCHAR}, 
+            #{enterprisePerson,jdbcType=VARCHAR}, #{enterpriseMobile,jdbcType=VARCHAR}, #{enterpriseMail,jdbcType=VARCHAR}, 
+            #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{lastUpdateUser,jdbcType=VARCHAR}, 
+            #{lastUpdateDate,jdbcType=TIMESTAMP}, #{fbk1,jdbcType=VARCHAR}, #{fbk2,jdbcType=VARCHAR}, 
+            #{fbk3,jdbcType=VARCHAR}, #{fbk4,jdbcType=VARCHAR}, #{fbk5,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.els.vo.ContactInfo" >
+        insert into els_contact_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="elsAccount != null" >
+                elsAccount,
+            </if>
+            <if test="isPublic != null" >
+                isPublic,
+            </if>
+            <if test="isSale != null" >
+                isSale,
+            </if>
+            <if test="isFinance != null" >
+                isFinance,
+            </if>
+            <if test="isEnterprise != null" >
+                isEnterprise,
+            </if>
+            <if test="salePerson != null" >
+                salePerson,
+            </if>
+            <if test="saleMobile != null" >
+                saleMobile,
+            </if>
+            <if test="saleMail != null" >
+                saleMail,
+            </if>
+            <if test="financePerson != null" >
+                financePerson,
+            </if>
+            <if test="financeMobile != null" >
+                financeMobile,
+            </if>
+            <if test="financeMail != null" >
+                financeMail,
+            </if>
+            <if test="enterprisePerson != null" >
+                enterprisePerson,
+            </if>
+            <if test="enterpriseMobile != null" >
+                enterpriseMobile,
+            </if>
+            <if test="enterpriseMail != null" >
+                enterpriseMail,
+            </if>
+            <if test="createUser != null" >
+                createUser,
+            </if>
+            <if test="createDate != null" >
+                createDate,
+            </if>
+            <if test="lastUpdateUser != null" >
+                lastUpdateUser,
+            </if>
+            <if test="lastUpdateDate != null" >
+                lastUpdateDate,
+            </if>
+            <if test="fbk1 != null" >
+                fbk1,
+            </if>
+            <if test="fbk2 != null" >
+                fbk2,
+            </if>
+            <if test="fbk3 != null" >
+                fbk3,
+            </if>
+            <if test="fbk4 != null" >
+                fbk4,
+            </if>
+            <if test="fbk5 != null" >
+                fbk5,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="elsAccount != null" >
+                #{elsAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="isPublic != null" >
+                #{isPublic,jdbcType=VARCHAR},
+            </if>
+            <if test="isSale != null" >
+                #{isSale,jdbcType=VARCHAR},
+            </if>
+            <if test="isFinance != null" >
+                #{isFinance,jdbcType=VARCHAR},
+            </if>
+            <if test="isEnterprise != null" >
+                #{isEnterprise,jdbcType=VARCHAR},
+            </if>
+            <if test="salePerson != null" >
+                #{salePerson,jdbcType=VARCHAR},
+            </if>
+            <if test="saleMobile != null" >
+                #{saleMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="saleMail != null" >
+                #{saleMail,jdbcType=VARCHAR},
+            </if>
+            <if test="financePerson != null" >
+                #{financePerson,jdbcType=VARCHAR},
+            </if>
+            <if test="financeMobile != null" >
+                #{financeMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="financeMail != null" >
+                #{financeMail,jdbcType=VARCHAR},
+            </if>
+            <if test="enterprisePerson != null" >
+                #{enterprisePerson,jdbcType=VARCHAR},
+            </if>
+            <if test="enterpriseMobile != null" >
+                #{enterpriseMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="enterpriseMail != null" >
+                #{enterpriseMail,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUser != null" >
+                #{lastUpdateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null" >
+                #{lastUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fbk1 != null" >
+                #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                #{fbk5,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.els.vo.ContactInfo" >
+        update els_contact_info
+        <set >
+            <if test="elsAccount != null" >
+                elsAccount = #{elsAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="isPublic != null" >
+                isPublic = #{isPublic,jdbcType=VARCHAR},
+            </if>
+            <if test="isSale != null" >
+                isSale = #{isSale,jdbcType=VARCHAR},
+            </if>
+            <if test="isFinance != null" >
+                isFinance = #{isFinance,jdbcType=VARCHAR},
+            </if>
+            <if test="isEnterprise != null" >
+                isEnterprise = #{isEnterprise,jdbcType=VARCHAR},
+            </if>
+            <if test="salePerson != null" >
+                salePerson = #{salePerson,jdbcType=VARCHAR},
+            </if>
+            <if test="saleMobile != null" >
+                saleMobile = #{saleMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="saleMail != null" >
+                saleMail = #{saleMail,jdbcType=VARCHAR},
+            </if>
+            <if test="financePerson != null" >
+                financePerson = #{financePerson,jdbcType=VARCHAR},
+            </if>
+            <if test="financeMobile != null" >
+                financeMobile = #{financeMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="financeMail != null" >
+                financeMail = #{financeMail,jdbcType=VARCHAR},
+            </if>
+            <if test="enterprisePerson != null" >
+                enterprisePerson = #{enterprisePerson,jdbcType=VARCHAR},
+            </if>
+            <if test="enterpriseMobile != null" >
+                enterpriseMobile = #{enterpriseMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="enterpriseMail != null" >
+                enterpriseMail = #{enterpriseMail,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                createUser = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                createDate = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUser != null" >
+                lastUpdateUser = #{lastUpdateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null" >
+                lastUpdateDate = #{lastUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fbk1 != null" >
+                fbk1 = #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                fbk2 = #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                fbk3 = #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                fbk4 = #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                fbk5 = #{fbk5,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.els.vo.ContactInfo" >
+        update els_contact_info
+        set elsAccount = #{elsAccount,jdbcType=VARCHAR},
+            isPublic = #{isPublic,jdbcType=VARCHAR},
+            isSale = #{isSale,jdbcType=VARCHAR},
+            isFinance = #{isFinance,jdbcType=VARCHAR},
+            isEnterprise = #{isEnterprise,jdbcType=VARCHAR},
+            salePerson = #{salePerson,jdbcType=VARCHAR},
+            saleMobile = #{saleMobile,jdbcType=VARCHAR},
+            saleMail = #{saleMail,jdbcType=VARCHAR},
+            financePerson = #{financePerson,jdbcType=VARCHAR},
+            financeMobile = #{financeMobile,jdbcType=VARCHAR},
+            financeMail = #{financeMail,jdbcType=VARCHAR},
+            enterprisePerson = #{enterprisePerson,jdbcType=VARCHAR},
+            enterpriseMobile = #{enterpriseMobile,jdbcType=VARCHAR},
+            enterpriseMail = #{enterpriseMail,jdbcType=VARCHAR},
+            createUser = #{createUser,jdbcType=VARCHAR},
+            createDate = #{createDate,jdbcType=TIMESTAMP},
+            lastUpdateUser = #{lastUpdateUser,jdbcType=VARCHAR},
+            lastUpdateDate = #{lastUpdateDate,jdbcType=TIMESTAMP},
+            fbk1 = #{fbk1,jdbcType=VARCHAR},
+            fbk2 = #{fbk2,jdbcType=VARCHAR},
+            fbk3 = #{fbk3,jdbcType=VARCHAR},
+            fbk4 = #{fbk4,jdbcType=VARCHAR},
+            fbk5 = #{fbk5,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

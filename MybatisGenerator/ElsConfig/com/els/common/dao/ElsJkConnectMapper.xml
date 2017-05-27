@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.els.common.dao.ElsJkConnectMapper" >
+    <resultMap id="BaseResultMap" type="com.els.common.vo.ElsJkConnect" >
+        <id column="JK_CONN_ID" property="jkConnId" jdbcType="VARCHAR" />
+        <result column="JK_TYPE" property="jkType" jdbcType="VARCHAR" />
+        <result column="JK_HOST" property="jkHost" jdbcType="VARCHAR" />
+        <result column="JK_SYS" property="jkSys" jdbcType="VARCHAR" />
+        <result column="JK_CLIENT" property="jkClient" jdbcType="VARCHAR" />
+        <result column="JK_USER" property="jkUser" jdbcType="VARCHAR" />
+        <result column="JK_PASSWD" property="jkPasswd" jdbcType="VARCHAR" />
+        <result column="JK_LANG" property="jkLang" jdbcType="VARCHAR" />
+        <result column="JK_POOL_CAPACITY" property="jkPoolCapacity" jdbcType="INTEGER" />
+        <result column="JK_PEAK_LIMIT" property="jkPeakLimit" jdbcType="INTEGER" />
+        <result column="FBK1" property="fbk1" jdbcType="VARCHAR" />
+        <result column="FBK2" property="fbk2" jdbcType="VARCHAR" />
+        <result column="FBK3" property="fbk3" jdbcType="VARCHAR" />
+        <result column="FBK4" property="fbk4" jdbcType="VARCHAR" />
+        <result column="FBK5" property="fbk5" jdbcType="VARCHAR" />
+        <result column="FBK6" property="fbk6" jdbcType="VARCHAR" />
+        <result column="FBK7" property="fbk7" jdbcType="VARCHAR" />
+        <result column="FBK8" property="fbk8" jdbcType="VARCHAR" />
+        <result column="FBK9" property="fbk9" jdbcType="VARCHAR" />
+        <result column="FBK10" property="fbk10" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        JK_CONN_ID, JK_TYPE, JK_HOST, JK_SYS, JK_CLIENT, JK_USER, JK_PASSWD, JK_LANG, JK_POOL_CAPACITY, 
+        JK_PEAK_LIMIT, FBK1, FBK2, FBK3, FBK4, FBK5, FBK6, FBK7, FBK8, FBK9, FBK10
+    </sql>
+
+    <insert id="insertSelective" parameterType="com.els.common.vo.ElsJkConnect" >
+        insert into ELS_JK_CONNECT
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="jkConnId != null" >
+                JK_CONN_ID,
+            </if>
+            <if test="jkType != null" >
+                JK_TYPE,
+            </if>
+            <if test="jkHost != null" >
+                JK_HOST,
+            </if>
+            <if test="jkSys != null" >
+                JK_SYS,
+            </if>
+            <if test="jkClient != null" >
+                JK_CLIENT,
+            </if>
+            <if test="jkUser != null" >
+                JK_USER,
+            </if>
+            <if test="jkPasswd != null" >
+                JK_PASSWD,
+            </if>
+            <if test="jkLang != null" >
+                JK_LANG,
+            </if>
+            <if test="jkPoolCapacity != null" >
+                JK_POOL_CAPACITY,
+            </if>
+            <if test="jkPeakLimit != null" >
+                JK_PEAK_LIMIT,
+            </if>
+            <if test="fbk1 != null" >
+                FBK1,
+            </if>
+            <if test="fbk2 != null" >
+                FBK2,
+            </if>
+            <if test="fbk3 != null" >
+                FBK3,
+            </if>
+            <if test="fbk4 != null" >
+                FBK4,
+            </if>
+            <if test="fbk5 != null" >
+                FBK5,
+            </if>
+            <if test="fbk6 != null" >
+                FBK6,
+            </if>
+            <if test="fbk7 != null" >
+                FBK7,
+            </if>
+            <if test="fbk8 != null" >
+                FBK8,
+            </if>
+            <if test="fbk9 != null" >
+                FBK9,
+            </if>
+            <if test="fbk10 != null" >
+                FBK10,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="jkConnId != null" >
+                #{jkConnId,jdbcType=VARCHAR},
+            </if>
+            <if test="jkType != null" >
+                #{jkType,jdbcType=VARCHAR},
+            </if>
+            <if test="jkHost != null" >
+                #{jkHost,jdbcType=VARCHAR},
+            </if>
+            <if test="jkSys != null" >
+                #{jkSys,jdbcType=VARCHAR},
+            </if>
+            <if test="jkClient != null" >
+                #{jkClient,jdbcType=VARCHAR},
+            </if>
+            <if test="jkUser != null" >
+                #{jkUser,jdbcType=VARCHAR},
+            </if>
+            <if test="jkPasswd != null" >
+                #{jkPasswd,jdbcType=VARCHAR},
+            </if>
+            <if test="jkLang != null" >
+                #{jkLang,jdbcType=VARCHAR},
+            </if>
+            <if test="jkPoolCapacity != null" >
+                #{jkPoolCapacity,jdbcType=INTEGER},
+            </if>
+            <if test="jkPeakLimit != null" >
+                #{jkPeakLimit,jdbcType=INTEGER},
+            </if>
+            <if test="fbk1 != null" >
+                #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                #{fbk5,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk6 != null" >
+                #{fbk6,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk7 != null" >
+                #{fbk7,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk8 != null" >
+                #{fbk8,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk9 != null" >
+                #{fbk9,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk10 != null" >
+                #{fbk10,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.els.common.vo.ElsJkConnect" >
+        update ELS_JK_CONNECT
+        <set >
+            <if test="jkType != null" >
+                JK_TYPE = #{jkType,jdbcType=VARCHAR},
+            </if>
+            <if test="jkHost != null" >
+                JK_HOST = #{jkHost,jdbcType=VARCHAR},
+            </if>
+            <if test="jkSys != null" >
+                JK_SYS = #{jkSys,jdbcType=VARCHAR},
+            </if>
+            <if test="jkClient != null" >
+                JK_CLIENT = #{jkClient,jdbcType=VARCHAR},
+            </if>
+            <if test="jkUser != null" >
+                JK_USER = #{jkUser,jdbcType=VARCHAR},
+            </if>
+            <if test="jkPasswd != null" >
+                JK_PASSWD = #{jkPasswd,jdbcType=VARCHAR},
+            </if>
+            <if test="jkLang != null" >
+                JK_LANG = #{jkLang,jdbcType=VARCHAR},
+            </if>
+            <if test="jkPoolCapacity != null" >
+                JK_POOL_CAPACITY = #{jkPoolCapacity,jdbcType=INTEGER},
+            </if>
+            <if test="jkPeakLimit != null" >
+                JK_PEAK_LIMIT = #{jkPeakLimit,jdbcType=INTEGER},
+            </if>
+            <if test="fbk1 != null" >
+                FBK1 = #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                FBK2 = #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                FBK3 = #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                FBK4 = #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                FBK5 = #{fbk5,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk6 != null" >
+                FBK6 = #{fbk6,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk7 != null" >
+                FBK7 = #{fbk7,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk8 != null" >
+                FBK8 = #{fbk8,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk9 != null" >
+                FBK9 = #{fbk9,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk10 != null" >
+                FBK10 = #{fbk10,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where JK_CONN_ID = #{jkConnId,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

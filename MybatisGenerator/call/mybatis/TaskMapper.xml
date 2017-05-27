@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cecsm.core.mapper.TaskMapper" >
+    <resultMap id="BaseResultMap" type="com.cecsm.core.entity.Task" >
+        <id column="task_id" property="task_id" jdbcType="BIGINT" />
+        <result column="content_id" property="content_id" jdbcType="BIGINT" />
+        <result column="patient_id" property="patient_id" jdbcType="BIGINT" />
+        <result column="user_id" property="user_id" jdbcType="BIGINT" />
+        <result column="type_id" property="type_id" jdbcType="BIGINT" />
+        <result column="priority" property="priority" jdbcType="INTEGER" />
+        <result column="receiver" property="receiver" jdbcType="BIGINT" />
+        <result column="mode" property="mode" jdbcType="INTEGER" />
+        <result column="call_status" property="call_status" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
+        <result column="finish_time" property="finish_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        task_id, content_id, patient_id, user_id, type_id, priority, receiver, mode, call_status, 
+        status, create_time, update_time, finish_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from task
+        where task_id = #{task_id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from task
+        where task_id = #{task_id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.cecsm.core.entity.Task" >
+        insert into task (task_id, content_id, patient_id, 
+            user_id, type_id, priority, 
+            receiver, mode, call_status, 
+            status, create_time, update_time, 
+            finish_time)
+        values (#{task_id,jdbcType=BIGINT}, #{content_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, 
+            #{user_id,jdbcType=BIGINT}, #{type_id,jdbcType=BIGINT}, #{priority,jdbcType=INTEGER}, 
+            #{receiver,jdbcType=BIGINT}, #{mode,jdbcType=INTEGER}, #{call_status,jdbcType=INTEGER}, 
+            #{status,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, 
+            #{finish_time,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cecsm.core.entity.Task" >
+        insert into task
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="task_id != null" >
+                task_id,
+            </if>
+            <if test="content_id != null" >
+                content_id,
+            </if>
+            <if test="patient_id != null" >
+                patient_id,
+            </if>
+            <if test="user_id != null" >
+                user_id,
+            </if>
+            <if test="type_id != null" >
+                type_id,
+            </if>
+            <if test="priority != null" >
+                priority,
+            </if>
+            <if test="receiver != null" >
+                receiver,
+            </if>
+            <if test="mode != null" >
+                mode,
+            </if>
+            <if test="call_status != null" >
+                call_status,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="create_time != null" >
+                create_time,
+            </if>
+            <if test="update_time != null" >
+                update_time,
+            </if>
+            <if test="finish_time != null" >
+                finish_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="task_id != null" >
+                #{task_id,jdbcType=BIGINT},
+            </if>
+            <if test="content_id != null" >
+                #{content_id,jdbcType=BIGINT},
+            </if>
+            <if test="patient_id != null" >
+                #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null" >
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="type_id != null" >
+                #{type_id,jdbcType=BIGINT},
+            </if>
+            <if test="priority != null" >
+                #{priority,jdbcType=INTEGER},
+            </if>
+            <if test="receiver != null" >
+                #{receiver,jdbcType=BIGINT},
+            </if>
+            <if test="mode != null" >
+                #{mode,jdbcType=INTEGER},
+            </if>
+            <if test="call_status != null" >
+                #{call_status,jdbcType=INTEGER},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="create_time != null" >
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null" >
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="finish_time != null" >
+                #{finish_time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cecsm.core.entity.Task" >
+        update task
+        <set >
+            <if test="content_id != null" >
+                content_id = #{content_id,jdbcType=BIGINT},
+            </if>
+            <if test="patient_id != null" >
+                patient_id = #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null" >
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="type_id != null" >
+                type_id = #{type_id,jdbcType=BIGINT},
+            </if>
+            <if test="priority != null" >
+                priority = #{priority,jdbcType=INTEGER},
+            </if>
+            <if test="receiver != null" >
+                receiver = #{receiver,jdbcType=BIGINT},
+            </if>
+            <if test="mode != null" >
+                mode = #{mode,jdbcType=INTEGER},
+            </if>
+            <if test="call_status != null" >
+                call_status = #{call_status,jdbcType=INTEGER},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="create_time != null" >
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null" >
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="finish_time != null" >
+                finish_time = #{finish_time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where task_id = #{task_id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cecsm.core.entity.Task" >
+        update task
+        set content_id = #{content_id,jdbcType=BIGINT},
+            patient_id = #{patient_id,jdbcType=BIGINT},
+            user_id = #{user_id,jdbcType=BIGINT},
+            type_id = #{type_id,jdbcType=BIGINT},
+            priority = #{priority,jdbcType=INTEGER},
+            receiver = #{receiver,jdbcType=BIGINT},
+            mode = #{mode,jdbcType=INTEGER},
+            call_status = #{call_status,jdbcType=INTEGER},
+            status = #{status,jdbcType=INTEGER},
+            create_time = #{create_time,jdbcType=TIMESTAMP},
+            update_time = #{update_time,jdbcType=TIMESTAMP},
+            finish_time = #{finish_time,jdbcType=TIMESTAMP}
+        where task_id = #{task_id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

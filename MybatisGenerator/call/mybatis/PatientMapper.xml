@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cecsm.core.mapper.PatientMapper" >
+    <resultMap id="BaseResultMap" type="com.cecsm.core.entity.Patient" >
+        <id column="patient_id" property="patient_id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="birth_date" property="birth_date" jdbcType="DATE" />
+        <result column="id_number" property="id_number" jdbcType="VARCHAR" />
+        <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+        <result column="height" property="height" jdbcType="REAL" />
+        <result column="weight" property="weight" jdbcType="REAL" />
+        <result column="BMI" property="BMI" jdbcType="REAL" />
+        <result column="diabetes_type" property="diabetes_type" jdbcType="VARCHAR" />
+        <result column="duration" property="duration" jdbcType="INTEGER" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="emergencycontact" property="emergencycontact" jdbcType="VARCHAR" />
+        <result column="emergency" property="emergency" jdbcType="VARCHAR" />
+        <result column="emergencycontact_other" property="emergencycontact_other" jdbcType="VARCHAR" />
+        <result column="contact_telephone" property="contact_telephone" jdbcType="VARCHAR" />
+        <result column="imei" property="imei" jdbcType="VARCHAR" />
+        <result column="disease_history" property="disease_history" jdbcType="VARCHAR" />
+        <result column="disease_check" property="disease_check" jdbcType="VARCHAR" />
+        <result column="disease_check_other" property="disease_check_other" jdbcType="VARCHAR" />
+        <result column="family_pathography" property="family_pathography" jdbcType="VARCHAR" />
+        <result column="family_pathography_check" property="family_pathography_check" jdbcType="CHAR" />
+        <result column="allergy" property="allergy" jdbcType="VARCHAR" />
+        <result column="allergy_name" property="allergy_name" jdbcType="VARCHAR" />
+        <result column="therapy" property="therapy" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="syndrome" property="syndrome" jdbcType="VARCHAR" />
+        <result column="syndrome_check" property="syndrome_check" jdbcType="VARCHAR" />
+        <result column="medication" property="medication" jdbcType="VARCHAR" />
+        <result column="therapy_type" property="therapy_type" jdbcType="VARCHAR" />
+        <result column="oral_name" property="oral_name" jdbcType="VARCHAR" />
+        <result column="oral_number" property="oral_number" jdbcType="INTEGER" />
+        <result column="oral_year" property="oral_year" jdbcType="VARCHAR" />
+        <result column="sport" property="sport" jdbcType="VARCHAR" />
+        <result column="smoke" property="smoke" jdbcType="VARCHAR" />
+        <result column="smoke_number" property="smoke_number" jdbcType="INTEGER" />
+        <result column="drink" property="drink" jdbcType="VARCHAR" />
+        <result column="drink_name" property="drink_name" jdbcType="VARCHAR" />
+        <result column="drink_number" property="drink_number" jdbcType="INTEGER" />
+        <result column="sport_habit" property="sport_habit" jdbcType="VARCHAR" />
+        <result column="sport_number" property="sport_number" jdbcType="INTEGER" />
+        <result column="sport_memo" property="sport_memo" jdbcType="VARCHAR" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
+        <result column="create_user_id" property="create_user_id" jdbcType="BIGINT" />
+        <result column="update_user_id" property="update_user_id" jdbcType="BIGINT" />
+        <result column="diagnosis_date" property="diagnosis_date" jdbcType="DATE" />
+    </resultMap>
+
+    <resultMap id="ResultMapWithBLOBs" type="com.cecsm.core.entity.Patient" extends="BaseResultMap" >
+        <result column="pharmacy" property="pharmacy" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        patient_id, name, gender, age, birth_date, id_number, telephone, height, weight, 
+        BMI, diabetes_type, duration, remark, address, emergencycontact, emergency, emergencycontact_other, 
+        contact_telephone, imei, disease_history, disease_check, disease_check_other, family_pathography, 
+        family_pathography_check, allergy, allergy_name, therapy, status, syndrome, syndrome_check, 
+        medication, therapy_type, oral_name, oral_number, oral_year, sport, smoke, smoke_number, 
+        drink, drink_name, drink_number, sport_habit, sport_number, sport_memo, create_time, 
+        update_time, create_user_id, update_user_id, diagnosis_date
+    </sql>
+
+    <sql id="Blob_Column_List" >
+        pharmacy
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        ,
+        <include refid="Blob_Column_List" />
+        from patient
+        where patient_id = #{patient_id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from patient
+        where patient_id = #{patient_id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.cecsm.core.entity.Patient" >
+        insert into patient (patient_id, name, gender, 
+            age, birth_date, id_number, 
+            telephone, height, weight, 
+            BMI, diabetes_type, duration, 
+            remark, address, emergencycontact, 
+            emergency, emergencycontact_other, contact_telephone, 
+            imei, disease_history, disease_check, 
+            disease_check_other, family_pathography, 
+            family_pathography_check, allergy, allergy_name, 
+            therapy, status, syndrome, 
+            syndrome_check, medication, therapy_type, 
+            oral_name, oral_number, oral_year, 
+            sport, smoke, smoke_number, 
+            drink, drink_name, drink_number, 
+            sport_habit, sport_number, sport_memo, 
+            create_time, update_time, create_user_id, 
+            update_user_id, diagnosis_date, pharmacy
+            )
+        values (#{patient_id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+            #{age,jdbcType=INTEGER}, #{birth_date,jdbcType=DATE}, #{id_number,jdbcType=VARCHAR}, 
+            #{telephone,jdbcType=VARCHAR}, #{height,jdbcType=REAL}, #{weight,jdbcType=REAL}, 
+            #{BMI,jdbcType=REAL}, #{diabetes_type,jdbcType=VARCHAR}, #{duration,jdbcType=INTEGER}, 
+            #{remark,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{emergencycontact,jdbcType=VARCHAR}, 
+            #{emergency,jdbcType=VARCHAR}, #{emergencycontact_other,jdbcType=VARCHAR}, #{contact_telephone,jdbcType=VARCHAR}, 
+            #{imei,jdbcType=VARCHAR}, #{disease_history,jdbcType=VARCHAR}, #{disease_check,jdbcType=VARCHAR}, 
+            #{disease_check_other,jdbcType=VARCHAR}, #{family_pathography,jdbcType=VARCHAR}, 
+            #{family_pathography_check,jdbcType=CHAR}, #{allergy,jdbcType=VARCHAR}, #{allergy_name,jdbcType=VARCHAR}, 
+            #{therapy,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{syndrome,jdbcType=VARCHAR}, 
+            #{syndrome_check,jdbcType=VARCHAR}, #{medication,jdbcType=VARCHAR}, #{therapy_type,jdbcType=VARCHAR}, 
+            #{oral_name,jdbcType=VARCHAR}, #{oral_number,jdbcType=INTEGER}, #{oral_year,jdbcType=VARCHAR}, 
+            #{sport,jdbcType=VARCHAR}, #{smoke,jdbcType=VARCHAR}, #{smoke_number,jdbcType=INTEGER}, 
+            #{drink,jdbcType=VARCHAR}, #{drink_name,jdbcType=VARCHAR}, #{drink_number,jdbcType=INTEGER}, 
+            #{sport_habit,jdbcType=VARCHAR}, #{sport_number,jdbcType=INTEGER}, #{sport_memo,jdbcType=VARCHAR}, 
+            #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, #{create_user_id,jdbcType=BIGINT}, 
+            #{update_user_id,jdbcType=BIGINT}, #{diagnosis_date,jdbcType=DATE}, #{pharmacy,jdbcType=LONGVARCHAR}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cecsm.core.entity.Patient" >
+        insert into patient
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="patient_id != null" >
+                patient_id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="gender != null" >
+                gender,
+            </if>
+            <if test="age != null" >
+                age,
+            </if>
+            <if test="birth_date != null" >
+                birth_date,
+            </if>
+            <if test="id_number != null" >
+                id_number,
+            </if>
+            <if test="telephone != null" >
+                telephone,
+            </if>
+            <if test="height != null" >
+                height,
+            </if>
+            <if test="weight != null" >
+                weight,
+            </if>
+            <if test="BMI != null" >
+                BMI,
+            </if>
+            <if test="diabetes_type != null" >
+                diabetes_type,
+            </if>
+            <if test="duration != null" >
+                duration,
+            </if>
+            <if test="remark != null" >
+                remark,
+            </if>
+            <if test="address != null" >
+                address,
+            </if>
+            <if test="emergencycontact != null" >
+                emergencycontact,
+            </if>
+            <if test="emergency != null" >
+                emergency,
+            </if>
+            <if test="emergencycontact_other != null" >
+                emergencycontact_other,
+            </if>
+            <if test="contact_telephone != null" >
+                contact_telephone,
+            </if>
+            <if test="imei != null" >
+                imei,
+            </if>
+            <if test="disease_history != null" >
+                disease_history,
+            </if>
+            <if test="disease_check != null" >
+                disease_check,
+            </if>
+            <if test="disease_check_other != null" >
+                disease_check_other,
+            </if>
+            <if test="family_pathography != null" >
+                family_pathography,
+            </if>
+            <if test="family_pathography_check != null" >
+                family_pathography_check,
+            </if>
+            <if test="allergy != null" >
+                allergy,
+            </if>
+            <if test="allergy_name != null" >
+                allergy_name,
+            </if>
+            <if test="therapy != null" >
+                therapy,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="syndrome != null" >
+                syndrome,
+            </if>
+            <if test="syndrome_check != null" >
+                syndrome_check,
+            </if>
+            <if test="medication != null" >
+                medication,
+            </if>
+            <if test="therapy_type != null" >
+                therapy_type,
+            </if>
+            <if test="oral_name != null" >
+                oral_name,
+            </if>
+            <if test="oral_number != null" >
+                oral_number,
+            </if>
+            <if test="oral_year != null" >
+                oral_year,
+            </if>
+            <if test="sport != null" >
+                sport,
+            </if>
+            <if test="smoke != null" >
+                smoke,
+            </if>
+            <if test="smoke_number != null" >
+                smoke_number,
+            </if>
+            <if test="drink != null" >
+                drink,
+            </if>
+            <if test="drink_name != null" >
+                drink_name,
+            </if>
+            <if test="drink_number != null" >
+                drink_number,
+            </if>
+            <if test="sport_habit != null" >
+                sport_habit,
+            </if>
+            <if test="sport_number != null" >
+                sport_number,
+            </if>
+            <if test="sport_memo != null" >
+                sport_memo,
+            </if>
+            <if test="create_time != null" >
+                create_time,
+            </if>
+            <if test="update_time != null" >
+                update_time,
+            </if>
+            <if test="create_user_id != null" >
+                create_user_id,
+            </if>
+            <if test="update_user_id != null" >
+                update_user_id,
+            </if>
+            <if test="diagnosis_date != null" >
+                diagnosis_date,
+            </if>
+            <if test="pharmacy != null" >
+                pharmacy,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="patient_id != null" >
+                #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null" >
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="birth_date != null" >
+                #{birth_date,jdbcType=DATE},
+            </if>
+            <if test="id_number != null" >
+                #{id_number,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null" >
+                #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="height != null" >
+                #{height,jdbcType=REAL},
+            </if>
+            <if test="weight != null" >
+                #{weight,jdbcType=REAL},
+            </if>
+            <if test="BMI != null" >
+                #{BMI,jdbcType=REAL},
+            </if>
+            <if test="diabetes_type != null" >
+                #{diabetes_type,jdbcType=VARCHAR},
+            </if>
+            <if test="duration != null" >
+                #{duration,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null" >
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="emergencycontact != null" >
+                #{emergencycontact,jdbcType=VARCHAR},
+            </if>
+            <if test="emergency != null" >
+                #{emergency,jdbcType=VARCHAR},
+            </if>
+            <if test="emergencycontact_other != null" >
+                #{emergencycontact_other,jdbcType=VARCHAR},
+            </if>
+            <if test="contact_telephone != null" >
+                #{contact_telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="imei != null" >
+                #{imei,jdbcType=VARCHAR},
+            </if>
+            <if test="disease_history != null" >
+                #{disease_history,jdbcType=VARCHAR},
+            </if>
+            <if test="disease_check != null" >
+                #{disease_check,jdbcType=VARCHAR},
+            </if>
+            <if test="disease_check_other != null" >
+                #{disease_check_other,jdbcType=VARCHAR},
+            </if>
+            <if test="family_pathography != null" >
+                #{family_pathography,jdbcType=VARCHAR},
+            </if>
+            <if test="family_pathography_check != null" >
+                #{family_pathography_check,jdbcType=CHAR},
+            </if>
+            <if test="allergy != null" >
+                #{allergy,jdbcType=VARCHAR},
+            </if>
+            <if test="allergy_name != null" >
+                #{allergy_name,jdbcType=VARCHAR},
+            </if>
+            <if test="therapy != null" >
+                #{therapy,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="syndrome != null" >
+                #{syndrome,jdbcType=VARCHAR},
+            </if>
+            <if test="syndrome_check != null" >
+                #{syndrome_check,jdbcType=VARCHAR},
+            </if>
+            <if test="medication != null" >
+                #{medication,jdbcType=VARCHAR},
+            </if>
+            <if test="therapy_type != null" >
+                #{therapy_type,jdbcType=VARCHAR},
+            </if>
+            <if test="oral_name != null" >
+                #{oral_name,jdbcType=VARCHAR},
+            </if>
+            <if test="oral_number != null" >
+                #{oral_number,jdbcType=INTEGER},
+            </if>
+            <if test="oral_year != null" >
+                #{oral_year,jdbcType=VARCHAR},
+            </if>
+            <if test="sport != null" >
+                #{sport,jdbcType=VARCHAR},
+            </if>
+            <if test="smoke != null" >
+                #{smoke,jdbcType=VARCHAR},
+            </if>
+            <if test="smoke_number != null" >
+                #{smoke_number,jdbcType=INTEGER},
+            </if>
+            <if test="drink != null" >
+                #{drink,jdbcType=VARCHAR},
+            </if>
+            <if test="drink_name != null" >
+                #{drink_name,jdbcType=VARCHAR},
+            </if>
+            <if test="drink_number != null" >
+                #{drink_number,jdbcType=INTEGER},
+            </if>
+            <if test="sport_habit != null" >
+                #{sport_habit,jdbcType=VARCHAR},
+            </if>
+            <if test="sport_number != null" >
+                #{sport_number,jdbcType=INTEGER},
+            </if>
+            <if test="sport_memo != null" >
+                #{sport_memo,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null" >
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null" >
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="create_user_id != null" >
+                #{create_user_id,jdbcType=BIGINT},
+            </if>
+            <if test="update_user_id != null" >
+                #{update_user_id,jdbcType=BIGINT},
+            </if>
+            <if test="diagnosis_date != null" >
+                #{diagnosis_date,jdbcType=DATE},
+            </if>
+            <if test="pharmacy != null" >
+                #{pharmacy,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cecsm.core.entity.Patient" >
+        update patient
+        <set >
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null" >
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="birth_date != null" >
+                birth_date = #{birth_date,jdbcType=DATE},
+            </if>
+            <if test="id_number != null" >
+                id_number = #{id_number,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null" >
+                telephone = #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="height != null" >
+                height = #{height,jdbcType=REAL},
+            </if>
+            <if test="weight != null" >
+                weight = #{weight,jdbcType=REAL},
+            </if>
+            <if test="BMI != null" >
+                BMI = #{BMI,jdbcType=REAL},
+            </if>
+            <if test="diabetes_type != null" >
+                diabetes_type = #{diabetes_type,jdbcType=VARCHAR},
+            </if>
+            <if test="duration != null" >
+                duration = #{duration,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null" >
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="emergencycontact != null" >
+                emergencycontact = #{emergencycontact,jdbcType=VARCHAR},
+            </if>
+            <if test="emergency != null" >
+                emergency = #{emergency,jdbcType=VARCHAR},
+            </if>
+            <if test="emergencycontact_other != null" >
+                emergencycontact_other = #{emergencycontact_other,jdbcType=VARCHAR},
+            </if>
+            <if test="contact_telephone != null" >
+                contact_telephone = #{contact_telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="imei != null" >
+                imei = #{imei,jdbcType=VARCHAR},
+            </if>
+            <if test="disease_history != null" >
+                disease_history = #{disease_history,jdbcType=VARCHAR},
+            </if>
+            <if test="disease_check != null" >
+                disease_check = #{disease_check,jdbcType=VARCHAR},
+            </if>
+            <if test="disease_check_other != null" >
+                disease_check_other = #{disease_check_other,jdbcType=VARCHAR},
+            </if>
+            <if test="family_pathography != null" >
+                family_pathography = #{family_pathography,jdbcType=VARCHAR},
+            </if>
+            <if test="family_pathography_check != null" >
+                family_pathography_check = #{family_pathography_check,jdbcType=CHAR},
+            </if>
+            <if test="allergy != null" >
+                allergy = #{allergy,jdbcType=VARCHAR},
+            </if>
+            <if test="allergy_name != null" >
+                allergy_name = #{allergy_name,jdbcType=VARCHAR},
+            </if>
+            <if test="therapy != null" >
+                therapy = #{therapy,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="syndrome != null" >
+                syndrome = #{syndrome,jdbcType=VARCHAR},
+            </if>
+            <if test="syndrome_check != null" >
+                syndrome_check = #{syndrome_check,jdbcType=VARCHAR},
+            </if>
+            <if test="medication != null" >
+                medication = #{medication,jdbcType=VARCHAR},
+            </if>
+            <if test="therapy_type != null" >
+                therapy_type = #{therapy_type,jdbcType=VARCHAR},
+            </if>
+            <if test="oral_name != null" >
+                oral_name = #{oral_name,jdbcType=VARCHAR},
+            </if>
+            <if test="oral_number != null" >
+                oral_number = #{oral_number,jdbcType=INTEGER},
+            </if>
+            <if test="oral_year != null" >
+                oral_year = #{oral_year,jdbcType=VARCHAR},
+            </if>
+            <if test="sport != null" >
+                sport = #{sport,jdbcType=VARCHAR},
+            </if>
+            <if test="smoke != null" >
+                smoke = #{smoke,jdbcType=VARCHAR},
+            </if>
+            <if test="smoke_number != null" >
+                smoke_number = #{smoke_number,jdbcType=INTEGER},
+            </if>
+            <if test="drink != null" >
+                drink = #{drink,jdbcType=VARCHAR},
+            </if>
+            <if test="drink_name != null" >
+                drink_name = #{drink_name,jdbcType=VARCHAR},
+            </if>
+            <if test="drink_number != null" >
+                drink_number = #{drink_number,jdbcType=INTEGER},
+            </if>
+            <if test="sport_habit != null" >
+                sport_habit = #{sport_habit,jdbcType=VARCHAR},
+            </if>
+            <if test="sport_number != null" >
+                sport_number = #{sport_number,jdbcType=INTEGER},
+            </if>
+            <if test="sport_memo != null" >
+                sport_memo = #{sport_memo,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null" >
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_time != null" >
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="create_user_id != null" >
+                create_user_id = #{create_user_id,jdbcType=BIGINT},
+            </if>
+            <if test="update_user_id != null" >
+                update_user_id = #{update_user_id,jdbcType=BIGINT},
+            </if>
+            <if test="diagnosis_date != null" >
+                diagnosis_date = #{diagnosis_date,jdbcType=DATE},
+            </if>
+            <if test="pharmacy != null" >
+                pharmacy = #{pharmacy,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where patient_id = #{patient_id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cecsm.core.entity.Patient" >
+        update patient
+        set name = #{name,jdbcType=VARCHAR},
+            gender = #{gender,jdbcType=VARCHAR},
+            age = #{age,jdbcType=INTEGER},
+            birth_date = #{birth_date,jdbcType=DATE},
+            id_number = #{id_number,jdbcType=VARCHAR},
+            telephone = #{telephone,jdbcType=VARCHAR},
+            height = #{height,jdbcType=REAL},
+            weight = #{weight,jdbcType=REAL},
+            BMI = #{BMI,jdbcType=REAL},
+            diabetes_type = #{diabetes_type,jdbcType=VARCHAR},
+            duration = #{duration,jdbcType=INTEGER},
+            remark = #{remark,jdbcType=VARCHAR},
+            address = #{address,jdbcType=VARCHAR},
+            emergencycontact = #{emergencycontact,jdbcType=VARCHAR},
+            emergency = #{emergency,jdbcType=VARCHAR},
+            emergencycontact_other = #{emergencycontact_other,jdbcType=VARCHAR},
+            contact_telephone = #{contact_telephone,jdbcType=VARCHAR},
+            imei = #{imei,jdbcType=VARCHAR},
+            disease_history = #{disease_history,jdbcType=VARCHAR},
+            disease_check = #{disease_check,jdbcType=VARCHAR},
+            disease_check_other = #{disease_check_other,jdbcType=VARCHAR},
+            family_pathography = #{family_pathography,jdbcType=VARCHAR},
+            family_pathography_check = #{family_pathography_check,jdbcType=CHAR},
+            allergy = #{allergy,jdbcType=VARCHAR},
+            allergy_name = #{allergy_name,jdbcType=VARCHAR},
+            therapy = #{therapy,jdbcType=VARCHAR},
+            status = #{status,jdbcType=INTEGER},
+            syndrome = #{syndrome,jdbcType=VARCHAR},
+            syndrome_check = #{syndrome_check,jdbcType=VARCHAR},
+            medication = #{medication,jdbcType=VARCHAR},
+            therapy_type = #{therapy_type,jdbcType=VARCHAR},
+            oral_name = #{oral_name,jdbcType=VARCHAR},
+            oral_number = #{oral_number,jdbcType=INTEGER},
+            oral_year = #{oral_year,jdbcType=VARCHAR},
+            sport = #{sport,jdbcType=VARCHAR},
+            smoke = #{smoke,jdbcType=VARCHAR},
+            smoke_number = #{smoke_number,jdbcType=INTEGER},
+            drink = #{drink,jdbcType=VARCHAR},
+            drink_name = #{drink_name,jdbcType=VARCHAR},
+            drink_number = #{drink_number,jdbcType=INTEGER},
+            sport_habit = #{sport_habit,jdbcType=VARCHAR},
+            sport_number = #{sport_number,jdbcType=INTEGER},
+            sport_memo = #{sport_memo,jdbcType=VARCHAR},
+            create_time = #{create_time,jdbcType=TIMESTAMP},
+            update_time = #{update_time,jdbcType=TIMESTAMP},
+            create_user_id = #{create_user_id,jdbcType=BIGINT},
+            update_user_id = #{update_user_id,jdbcType=BIGINT},
+            diagnosis_date = #{diagnosis_date,jdbcType=DATE},
+            pharmacy = #{pharmacy,jdbcType=LONGVARCHAR}
+        where patient_id = #{patient_id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cecsm.core.entity.Patient" >
+        update patient
+        set name = #{name,jdbcType=VARCHAR},
+            gender = #{gender,jdbcType=VARCHAR},
+            age = #{age,jdbcType=INTEGER},
+            birth_date = #{birth_date,jdbcType=DATE},
+            id_number = #{id_number,jdbcType=VARCHAR},
+            telephone = #{telephone,jdbcType=VARCHAR},
+            height = #{height,jdbcType=REAL},
+            weight = #{weight,jdbcType=REAL},
+            BMI = #{BMI,jdbcType=REAL},
+            diabetes_type = #{diabetes_type,jdbcType=VARCHAR},
+            duration = #{duration,jdbcType=INTEGER},
+            remark = #{remark,jdbcType=VARCHAR},
+            address = #{address,jdbcType=VARCHAR},
+            emergencycontact = #{emergencycontact,jdbcType=VARCHAR},
+            emergency = #{emergency,jdbcType=VARCHAR},
+            emergencycontact_other = #{emergencycontact_other,jdbcType=VARCHAR},
+            contact_telephone = #{contact_telephone,jdbcType=VARCHAR},
+            imei = #{imei,jdbcType=VARCHAR},
+            disease_history = #{disease_history,jdbcType=VARCHAR},
+            disease_check = #{disease_check,jdbcType=VARCHAR},
+            disease_check_other = #{disease_check_other,jdbcType=VARCHAR},
+            family_pathography = #{family_pathography,jdbcType=VARCHAR},
+            family_pathography_check = #{family_pathography_check,jdbcType=CHAR},
+            allergy = #{allergy,jdbcType=VARCHAR},
+            allergy_name = #{allergy_name,jdbcType=VARCHAR},
+            therapy = #{therapy,jdbcType=VARCHAR},
+            status = #{status,jdbcType=INTEGER},
+            syndrome = #{syndrome,jdbcType=VARCHAR},
+            syndrome_check = #{syndrome_check,jdbcType=VARCHAR},
+            medication = #{medication,jdbcType=VARCHAR},
+            therapy_type = #{therapy_type,jdbcType=VARCHAR},
+            oral_name = #{oral_name,jdbcType=VARCHAR},
+            oral_number = #{oral_number,jdbcType=INTEGER},
+            oral_year = #{oral_year,jdbcType=VARCHAR},
+            sport = #{sport,jdbcType=VARCHAR},
+            smoke = #{smoke,jdbcType=VARCHAR},
+            smoke_number = #{smoke_number,jdbcType=INTEGER},
+            drink = #{drink,jdbcType=VARCHAR},
+            drink_name = #{drink_name,jdbcType=VARCHAR},
+            drink_number = #{drink_number,jdbcType=INTEGER},
+            sport_habit = #{sport_habit,jdbcType=VARCHAR},
+            sport_number = #{sport_number,jdbcType=INTEGER},
+            sport_memo = #{sport_memo,jdbcType=VARCHAR},
+            create_time = #{create_time,jdbcType=TIMESTAMP},
+            update_time = #{update_time,jdbcType=TIMESTAMP},
+            create_user_id = #{create_user_id,jdbcType=BIGINT},
+            update_user_id = #{update_user_id,jdbcType=BIGINT},
+            diagnosis_date = #{diagnosis_date,jdbcType=DATE}
+        where patient_id = #{patient_id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

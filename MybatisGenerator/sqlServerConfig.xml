@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  
+  <!-- 指定数据连接驱动jar地址 -->
+  <classPathEntry location="D:/jzd_java/workspace/MybatisGenerator/lib/mysql-connector-java-5.1.26-bin.jar" />
+  
+  <!--
+  	targetRuntime:
+  		MyBatis3:默认值;MyBatis3Simple 不生成和Example查询有关的内容,避免在后面的<table>中逐个进行配置
+  	defaultModelType:
+  		conditional:默认值,如果表有联合主键,那么该模型会产生一个单独的主键实体类; flat:该模型为每一张表只生成一个实体类.
+  
+   -->
+  <context id="context1" targetRuntime="MyBatis3" defaultModelType="flat">
+    <!-- 注释 -->  
+    <commentGenerator >  
+        <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->  
+        <property name="suppressDate" value="true" /> <!-- 是否生成注释带时间戳-->  
+    </commentGenerator>
+    
+    <!-- jdbc连接 --> 
+    <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
+        connectionURL="jdbc:sqlserver://192.168.0.127:1433;databaseName=UFSystem" 
+        userId="sa" 
+        password="gdx.com" />
+    
+    <!-- 类型转换 --> 
+    <javaTypeResolver>
+        <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） --> 
+        <property name="forceBigDecimals" value="true"/>
+    </javaTypeResolver>
+    
+    <javaModelGenerator targetPackage="com.els.vo" targetProject="ELSServer">
+        <!-- 是否继承指定类 -->
+        <property name="rootClass" value="com.els.common.BaseVO"/>
+        <!-- 是否在当前路径下新加一层schema,eg：fase路径com.els.common.vo， true:com.batian.modules.common.vo.[schemaName] -->
+        <property name="enableSubPackages" value="true" />
+        <!-- 是否针对string类型的字段在set的时候进行trim调用 --> 
+        <property name="trimStrings" value="true"/>
+    </javaModelGenerator>
+    
+    <!-- 生成*Mapper.xml文件 -->
+    <sqlMapGenerator targetPackage="com.els.mysal.mapping" targetProject="ELSServer">
+        <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+    
+    <!-- 生成对应接口DAO及DaoImpl -->
+    <javaClientGenerator targetPackage="com.els.dao" targetProject="ELSServer" type="XMLMAPPER">
+        <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+    
+    <!-- Table配置 -->
+    <!-- <table tableName="purchase_enquiry_header" domainObjectName="PurchaseEnquiryHeader" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_enquiry_header_his" domainObjectName="PurchaseEnquiryHeaderHis" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_enquiry_header" domainObjectName="SaleEnquiryHeader" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_enquiry_header_his" domainObjectName="SaleEnquiryHeaderHis" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_set_enquiry_header" domainObjectName="PurchaseSetEnquiryHeader" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_set_enquiry_header" domainObjectName="SaleSetEnquiryHeader" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_enquiry_ladder_price" domainObjectName="PurchaseEnquiryLadderPrice" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_enquiry_ladder_price_his" domainObjectName="PurchaseEnquiryLadderPriceHis" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_enquiry_material" domainObjectName="PurchaseEnquiryMaterial" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_enquiry_material_set" domainObjectName="PurchaseEnquiryMaterialSet" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_enquiry_ladder_price" domainObjectName="SaleEnquiryLadderPrice" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_enquiry_ladder_price_his" domainObjectName="SaleEnquiryLadderPriceHis" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_enquiry_material" domainObjectName="SaleEnquiryMaterial" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_enquiry_ladder_price_set" domainObjectName="SaleEnquiryLadderPriceSet" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_enquiry_item_his" domainObjectName="SaleEnquiryItemHis" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_enquiry_item" domainObjectName="SaleEnquiryItem" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_enquiry_item_his" domainObjectName="PurchaseEnquiryItemHis" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_enquiry_item" domainObjectName="PurchaseEnquiryItem" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table> -->
+    
+    <!-- <table tableName="purchase_create_enquiry_file" domainObjectName="PurchaseCreateEnquiryFile" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_receive_enquiry_file" domainObjectName="PurchaseReceiveEnquiryFile" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_create_enquiry_file" domainObjectName="SaleCreateEnquiryFile" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="sale_receive_enquiry_file" domainObjectName="SaleReceiveEnquiryFile" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_enquiry_supplie_list" domainObjectName="PurchaseEnquirySupplieList" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table>
+    
+    <table tableName="purchase_enquiry_approve" domainObjectName="PurchaseEnquiryApprove" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>默认false,设置为true则按数据库实际字段生成属性名,设置为false则按驼峰命名方式生成属性名
+    </table> -->
+    
+<!--     <table tableName="purchase_enquiry_item" domainObjectName="PurchaseEnquiryItem" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>
+    </table> -->
+    
+<!--         <table tableName="els_enterprise_info" domainObjectName="Enterprise" 
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>
+    </table> -->
+    
+         <table tableName="AA_Enum" domainObjectName="AAEnum"
+    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+    	<property name="useActualColumnNames" value="true"/>
+    </table>
+    
+    
+    
+  </context>
+</generatorConfiguration>

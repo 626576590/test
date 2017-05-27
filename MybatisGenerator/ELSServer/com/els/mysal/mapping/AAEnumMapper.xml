@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.els.dao.AAEnumMapper" >
+    <resultMap id="BaseResultMap" type="com.els.vo.AAEnum" >
+        <id column="EnumType" property="enumType" jdbcType="NVARCHAR" />
+        <id column="LocaleId" property="localeId" jdbcType="NVARCHAR" />
+        <id column="EnumIndex" property="enumIndex" jdbcType="INTEGER" />
+        <result column="EnumCode" property="enumCode" jdbcType="NVARCHAR" />
+        <result column="EnumName" property="enumName" jdbcType="NVARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        EnumType, LocaleId, EnumIndex, EnumCode, EnumName
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+        select 
+        <include refid="Base_Column_List" />
+        from AA_Enum
+        where EnumType = #{enumType,jdbcType=NVARCHAR}
+          and LocaleId = #{localeId,jdbcType=NVARCHAR}
+          and EnumIndex = #{enumIndex,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map" >
+        delete from AA_Enum
+        where EnumType = #{enumType,jdbcType=NVARCHAR}
+          and LocaleId = #{localeId,jdbcType=NVARCHAR}
+          and EnumIndex = #{enumIndex,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.els.vo.AAEnum" >
+        insert into AA_Enum (EnumType, LocaleId, EnumIndex, 
+            EnumCode, EnumName)
+        values (#{enumType,jdbcType=NVARCHAR}, #{localeId,jdbcType=NVARCHAR}, #{enumIndex,jdbcType=INTEGER}, 
+            #{enumCode,jdbcType=NVARCHAR}, #{enumName,jdbcType=NVARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.els.vo.AAEnum" >
+        insert into AA_Enum
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="enumType != null" >
+                EnumType,
+            </if>
+            <if test="localeId != null" >
+                LocaleId,
+            </if>
+            <if test="enumIndex != null" >
+                EnumIndex,
+            </if>
+            <if test="enumCode != null" >
+                EnumCode,
+            </if>
+            <if test="enumName != null" >
+                EnumName,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="enumType != null" >
+                #{enumType,jdbcType=NVARCHAR},
+            </if>
+            <if test="localeId != null" >
+                #{localeId,jdbcType=NVARCHAR},
+            </if>
+            <if test="enumIndex != null" >
+                #{enumIndex,jdbcType=INTEGER},
+            </if>
+            <if test="enumCode != null" >
+                #{enumCode,jdbcType=NVARCHAR},
+            </if>
+            <if test="enumName != null" >
+                #{enumName,jdbcType=NVARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.els.vo.AAEnum" >
+        update AA_Enum
+        <set >
+            <if test="enumCode != null" >
+                EnumCode = #{enumCode,jdbcType=NVARCHAR},
+            </if>
+            <if test="enumName != null" >
+                EnumName = #{enumName,jdbcType=NVARCHAR},
+            </if>
+        </set>
+        where EnumType = #{enumType,jdbcType=NVARCHAR}
+          and LocaleId = #{localeId,jdbcType=NVARCHAR}
+          and EnumIndex = #{enumIndex,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.els.vo.AAEnum" >
+        update AA_Enum
+        set EnumCode = #{enumCode,jdbcType=NVARCHAR},
+            EnumName = #{enumName,jdbcType=NVARCHAR}
+        where EnumType = #{enumType,jdbcType=NVARCHAR}
+          and LocaleId = #{localeId,jdbcType=NVARCHAR}
+          and EnumIndex = #{enumIndex,jdbcType=INTEGER}
+    </update>
+
+</mapper>

@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cecsm.mpspcore.common.mapper.ApplyMapper" >
+    <resultMap id="BaseResultMap" type="com.cecsm.mpspcore.common.entity.Apply" >
+        <id column="request_id" property="request_id" jdbcType="VARCHAR" />
+        <id column="hospital_id" property="hospital_id" jdbcType="BIGINT" />
+        <result column="patient_id" property="patient_id" jdbcType="VARCHAR" />
+        <result column="patient_ad" property="patient_ad" jdbcType="VARCHAR" />
+        <result column="patient_name" property="patient_name" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="ages" property="ages" jdbcType="VARCHAR" />
+        <result column="admission_date" property="admission_date" jdbcType="TIMESTAMP" />
+        <result column="dept_id" property="dept_id" jdbcType="VARCHAR" />
+        <result column="diagnosis" property="diagnosis" jdbcType="VARCHAR" />
+        <result column="purpose" property="purpose" jdbcType="VARCHAR" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+        <result column="request_time" property="request_time" jdbcType="TIMESTAMP" />
+        <result column="doctor_id" property="doctor_id" jdbcType="VARCHAR" />
+        <result column="request_dept" property="request_dept" jdbcType="VARCHAR" />
+        <result column="request_hospital" property="request_hospital" jdbcType="BIGINT" />
+        <result column="invite_doctor" property="invite_doctor" jdbcType="VARCHAR" />
+        <result column="invite_dept" property="invite_dept" jdbcType="VARCHAR" />
+        <result column="invite_hospital" property="invite_hospital" jdbcType="BIGINT" />
+        <result column="receive_time" property="receive_time" jdbcType="TIMESTAMP" />
+        <result column="receive_doctor" property="receive_doctor" jdbcType="VARCHAR" />
+        <result column="answer_time" property="answer_time" jdbcType="TIMESTAMP" />
+        <result column="answer_doctor" property="answer_doctor" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="advice" property="advice" jdbcType="VARCHAR" />
+        <result column="datas" property="datas" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="visit_id" property="visit_id" jdbcType="VARCHAR" />
+        <result column="signs" property="signs" jdbcType="VARCHAR" />
+        <result column="store_signs" property="store_signs" jdbcType="VARCHAR" />
+        <result column="store_up_date" property="store_up_date" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        request_id, hospital_id, patient_id, patient_ad, patient_name, sex, ages, admission_date, 
+        dept_id, diagnosis, purpose, create_time, request_time, doctor_id, request_dept, 
+        request_hospital, invite_doctor, invite_dept, invite_hospital, receive_time, receive_doctor, 
+        answer_time, answer_doctor, status, advice, datas, phone, visit_id, signs, store_signs, 
+        store_up_date
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+        select 
+        <include refid="Base_Column_List" />
+        from apply
+        where request_id = #{request_id,jdbcType=VARCHAR}
+          and hospital_id = #{hospital_id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map" >
+        delete from apply
+        where request_id = #{request_id,jdbcType=VARCHAR}
+          and hospital_id = #{hospital_id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.cecsm.mpspcore.common.entity.Apply" >
+        insert into apply (request_id, hospital_id, patient_id, 
+            patient_ad, patient_name, sex, 
+            ages, admission_date, dept_id, 
+            diagnosis, purpose, create_time, 
+            request_time, doctor_id, request_dept, 
+            request_hospital, invite_doctor, invite_dept, 
+            invite_hospital, receive_time, receive_doctor, 
+            answer_time, answer_doctor, status, 
+            advice, datas, phone, 
+            visit_id, signs, store_signs, 
+            store_up_date)
+        values (#{request_id,jdbcType=VARCHAR}, #{hospital_id,jdbcType=BIGINT}, #{patient_id,jdbcType=VARCHAR}, 
+            #{patient_ad,jdbcType=VARCHAR}, #{patient_name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+            #{ages,jdbcType=VARCHAR}, #{admission_date,jdbcType=TIMESTAMP}, #{dept_id,jdbcType=VARCHAR}, 
+            #{diagnosis,jdbcType=VARCHAR}, #{purpose,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+            #{request_time,jdbcType=TIMESTAMP}, #{doctor_id,jdbcType=VARCHAR}, #{request_dept,jdbcType=VARCHAR}, 
+            #{request_hospital,jdbcType=BIGINT}, #{invite_doctor,jdbcType=VARCHAR}, #{invite_dept,jdbcType=VARCHAR}, 
+            #{invite_hospital,jdbcType=BIGINT}, #{receive_time,jdbcType=TIMESTAMP}, #{receive_doctor,jdbcType=VARCHAR}, 
+            #{answer_time,jdbcType=TIMESTAMP}, #{answer_doctor,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+            #{advice,jdbcType=VARCHAR}, #{datas,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+            #{visit_id,jdbcType=VARCHAR}, #{signs,jdbcType=VARCHAR}, #{store_signs,jdbcType=VARCHAR}, 
+            #{store_up_date,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cecsm.mpspcore.common.entity.Apply" >
+        insert into apply
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="request_id != null" >
+                request_id,
+            </if>
+            <if test="hospital_id != null" >
+                hospital_id,
+            </if>
+            <if test="patient_id != null" >
+                patient_id,
+            </if>
+            <if test="patient_ad != null" >
+                patient_ad,
+            </if>
+            <if test="patient_name != null" >
+                patient_name,
+            </if>
+            <if test="sex != null" >
+                sex,
+            </if>
+            <if test="ages != null" >
+                ages,
+            </if>
+            <if test="admission_date != null" >
+                admission_date,
+            </if>
+            <if test="dept_id != null" >
+                dept_id,
+            </if>
+            <if test="diagnosis != null" >
+                diagnosis,
+            </if>
+            <if test="purpose != null" >
+                purpose,
+            </if>
+            <if test="create_time != null" >
+                create_time,
+            </if>
+            <if test="request_time != null" >
+                request_time,
+            </if>
+            <if test="doctor_id != null" >
+                doctor_id,
+            </if>
+            <if test="request_dept != null" >
+                request_dept,
+            </if>
+            <if test="request_hospital != null" >
+                request_hospital,
+            </if>
+            <if test="invite_doctor != null" >
+                invite_doctor,
+            </if>
+            <if test="invite_dept != null" >
+                invite_dept,
+            </if>
+            <if test="invite_hospital != null" >
+                invite_hospital,
+            </if>
+            <if test="receive_time != null" >
+                receive_time,
+            </if>
+            <if test="receive_doctor != null" >
+                receive_doctor,
+            </if>
+            <if test="answer_time != null" >
+                answer_time,
+            </if>
+            <if test="answer_doctor != null" >
+                answer_doctor,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="advice != null" >
+                advice,
+            </if>
+            <if test="datas != null" >
+                datas,
+            </if>
+            <if test="phone != null" >
+                phone,
+            </if>
+            <if test="visit_id != null" >
+                visit_id,
+            </if>
+            <if test="signs != null" >
+                signs,
+            </if>
+            <if test="store_signs != null" >
+                store_signs,
+            </if>
+            <if test="store_up_date != null" >
+                store_up_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="request_id != null" >
+                #{request_id,jdbcType=VARCHAR},
+            </if>
+            <if test="hospital_id != null" >
+                #{hospital_id,jdbcType=BIGINT},
+            </if>
+            <if test="patient_id != null" >
+                #{patient_id,jdbcType=VARCHAR},
+            </if>
+            <if test="patient_ad != null" >
+                #{patient_ad,jdbcType=VARCHAR},
+            </if>
+            <if test="patient_name != null" >
+                #{patient_name,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null" >
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="ages != null" >
+                #{ages,jdbcType=VARCHAR},
+            </if>
+            <if test="admission_date != null" >
+                #{admission_date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dept_id != null" >
+                #{dept_id,jdbcType=VARCHAR},
+            </if>
+            <if test="diagnosis != null" >
+                #{diagnosis,jdbcType=VARCHAR},
+            </if>
+            <if test="purpose != null" >
+                #{purpose,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null" >
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="request_time != null" >
+                #{request_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="doctor_id != null" >
+                #{doctor_id,jdbcType=VARCHAR},
+            </if>
+            <if test="request_dept != null" >
+                #{request_dept,jdbcType=VARCHAR},
+            </if>
+            <if test="request_hospital != null" >
+                #{request_hospital,jdbcType=BIGINT},
+            </if>
+            <if test="invite_doctor != null" >
+                #{invite_doctor,jdbcType=VARCHAR},
+            </if>
+            <if test="invite_dept != null" >
+                #{invite_dept,jdbcType=VARCHAR},
+            </if>
+            <if test="invite_hospital != null" >
+                #{invite_hospital,jdbcType=BIGINT},
+            </if>
+            <if test="receive_time != null" >
+                #{receive_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="receive_doctor != null" >
+                #{receive_doctor,jdbcType=VARCHAR},
+            </if>
+            <if test="answer_time != null" >
+                #{answer_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="answer_doctor != null" >
+                #{answer_doctor,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="advice != null" >
+                #{advice,jdbcType=VARCHAR},
+            </if>
+            <if test="datas != null" >
+                #{datas,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="visit_id != null" >
+                #{visit_id,jdbcType=VARCHAR},
+            </if>
+            <if test="signs != null" >
+                #{signs,jdbcType=VARCHAR},
+            </if>
+            <if test="store_signs != null" >
+                #{store_signs,jdbcType=VARCHAR},
+            </if>
+            <if test="store_up_date != null" >
+                #{store_up_date,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cecsm.mpspcore.common.entity.Apply" >
+        update apply
+        <set >
+            <if test="patient_id != null" >
+                patient_id = #{patient_id,jdbcType=VARCHAR},
+            </if>
+            <if test="patient_ad != null" >
+                patient_ad = #{patient_ad,jdbcType=VARCHAR},
+            </if>
+            <if test="patient_name != null" >
+                patient_name = #{patient_name,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null" >
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="ages != null" >
+                ages = #{ages,jdbcType=VARCHAR},
+            </if>
+            <if test="admission_date != null" >
+                admission_date = #{admission_date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dept_id != null" >
+                dept_id = #{dept_id,jdbcType=VARCHAR},
+            </if>
+            <if test="diagnosis != null" >
+                diagnosis = #{diagnosis,jdbcType=VARCHAR},
+            </if>
+            <if test="purpose != null" >
+                purpose = #{purpose,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null" >
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="request_time != null" >
+                request_time = #{request_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="doctor_id != null" >
+                doctor_id = #{doctor_id,jdbcType=VARCHAR},
+            </if>
+            <if test="request_dept != null" >
+                request_dept = #{request_dept,jdbcType=VARCHAR},
+            </if>
+            <if test="request_hospital != null" >
+                request_hospital = #{request_hospital,jdbcType=BIGINT},
+            </if>
+            <if test="invite_doctor != null" >
+                invite_doctor = #{invite_doctor,jdbcType=VARCHAR},
+            </if>
+            <if test="invite_dept != null" >
+                invite_dept = #{invite_dept,jdbcType=VARCHAR},
+            </if>
+            <if test="invite_hospital != null" >
+                invite_hospital = #{invite_hospital,jdbcType=BIGINT},
+            </if>
+            <if test="receive_time != null" >
+                receive_time = #{receive_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="receive_doctor != null" >
+                receive_doctor = #{receive_doctor,jdbcType=VARCHAR},
+            </if>
+            <if test="answer_time != null" >
+                answer_time = #{answer_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="answer_doctor != null" >
+                answer_doctor = #{answer_doctor,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="advice != null" >
+                advice = #{advice,jdbcType=VARCHAR},
+            </if>
+            <if test="datas != null" >
+                datas = #{datas,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="visit_id != null" >
+                visit_id = #{visit_id,jdbcType=VARCHAR},
+            </if>
+            <if test="signs != null" >
+                signs = #{signs,jdbcType=VARCHAR},
+            </if>
+            <if test="store_signs != null" >
+                store_signs = #{store_signs,jdbcType=VARCHAR},
+            </if>
+            <if test="store_up_date != null" >
+                store_up_date = #{store_up_date,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where request_id = #{request_id,jdbcType=VARCHAR}
+          and hospital_id = #{hospital_id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cecsm.mpspcore.common.entity.Apply" >
+        update apply
+        set patient_id = #{patient_id,jdbcType=VARCHAR},
+            patient_ad = #{patient_ad,jdbcType=VARCHAR},
+            patient_name = #{patient_name,jdbcType=VARCHAR},
+            sex = #{sex,jdbcType=VARCHAR},
+            ages = #{ages,jdbcType=VARCHAR},
+            admission_date = #{admission_date,jdbcType=TIMESTAMP},
+            dept_id = #{dept_id,jdbcType=VARCHAR},
+            diagnosis = #{diagnosis,jdbcType=VARCHAR},
+            purpose = #{purpose,jdbcType=VARCHAR},
+            create_time = #{create_time,jdbcType=TIMESTAMP},
+            request_time = #{request_time,jdbcType=TIMESTAMP},
+            doctor_id = #{doctor_id,jdbcType=VARCHAR},
+            request_dept = #{request_dept,jdbcType=VARCHAR},
+            request_hospital = #{request_hospital,jdbcType=BIGINT},
+            invite_doctor = #{invite_doctor,jdbcType=VARCHAR},
+            invite_dept = #{invite_dept,jdbcType=VARCHAR},
+            invite_hospital = #{invite_hospital,jdbcType=BIGINT},
+            receive_time = #{receive_time,jdbcType=TIMESTAMP},
+            receive_doctor = #{receive_doctor,jdbcType=VARCHAR},
+            answer_time = #{answer_time,jdbcType=TIMESTAMP},
+            answer_doctor = #{answer_doctor,jdbcType=VARCHAR},
+            status = #{status,jdbcType=VARCHAR},
+            advice = #{advice,jdbcType=VARCHAR},
+            datas = #{datas,jdbcType=VARCHAR},
+            phone = #{phone,jdbcType=VARCHAR},
+            visit_id = #{visit_id,jdbcType=VARCHAR},
+            signs = #{signs,jdbcType=VARCHAR},
+            store_signs = #{store_signs,jdbcType=VARCHAR},
+            store_up_date = #{store_up_date,jdbcType=TIMESTAMP}
+        where request_id = #{request_id,jdbcType=VARCHAR}
+          and hospital_id = #{hospital_id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

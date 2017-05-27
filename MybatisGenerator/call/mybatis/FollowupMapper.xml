@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cecsm.core.mapper.FollowupMapper" >
+    <resultMap id="BaseResultMap" type="com.cecsm.core.entity.Followup" >
+        <id column="followup_id" property="followup_id" jdbcType="BIGINT" />
+        <result column="task_id" property="task_id" jdbcType="BIGINT" />
+        <result column="patient_id" property="patient_id" jdbcType="BIGINT" />
+        <result column="user_id" property="user_id" jdbcType="BIGINT" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="keyword" property="keyword" jdbcType="VARCHAR" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        followup_id, task_id, patient_id, user_id, content, keyword, create_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from followup
+        where followup_id = #{followup_id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from followup
+        where followup_id = #{followup_id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.cecsm.core.entity.Followup" >
+        insert into followup (followup_id, task_id, patient_id, 
+            user_id, content, keyword, 
+            create_time)
+        values (#{followup_id,jdbcType=BIGINT}, #{task_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, 
+            #{user_id,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, 
+            #{create_time,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cecsm.core.entity.Followup" >
+        insert into followup
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="followup_id != null" >
+                followup_id,
+            </if>
+            <if test="task_id != null" >
+                task_id,
+            </if>
+            <if test="patient_id != null" >
+                patient_id,
+            </if>
+            <if test="user_id != null" >
+                user_id,
+            </if>
+            <if test="content != null" >
+                content,
+            </if>
+            <if test="keyword != null" >
+                keyword,
+            </if>
+            <if test="create_time != null" >
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="followup_id != null" >
+                #{followup_id,jdbcType=BIGINT},
+            </if>
+            <if test="task_id != null" >
+                #{task_id,jdbcType=BIGINT},
+            </if>
+            <if test="patient_id != null" >
+                #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null" >
+                #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="content != null" >
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="keyword != null" >
+                #{keyword,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null" >
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cecsm.core.entity.Followup" >
+        update followup
+        <set >
+            <if test="task_id != null" >
+                task_id = #{task_id,jdbcType=BIGINT},
+            </if>
+            <if test="patient_id != null" >
+                patient_id = #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="user_id != null" >
+                user_id = #{user_id,jdbcType=BIGINT},
+            </if>
+            <if test="content != null" >
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="keyword != null" >
+                keyword = #{keyword,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null" >
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where followup_id = #{followup_id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cecsm.core.entity.Followup" >
+        update followup
+        set task_id = #{task_id,jdbcType=BIGINT},
+            patient_id = #{patient_id,jdbcType=BIGINT},
+            user_id = #{user_id,jdbcType=BIGINT},
+            content = #{content,jdbcType=VARCHAR},
+            keyword = #{keyword,jdbcType=VARCHAR},
+            create_time = #{create_time,jdbcType=TIMESTAMP}
+        where followup_id = #{followup_id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

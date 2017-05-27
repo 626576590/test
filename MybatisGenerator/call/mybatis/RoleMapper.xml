@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cecsm.core.mapper.RoleMapper" >
+    <resultMap id="BaseResultMap" type="com.cecsm.core.entity.Role" >
+        <id column="role_id" property="role_id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        role_id, name
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from role
+        where role_id = #{role_id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from role
+        where role_id = #{role_id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.cecsm.core.entity.Role" >
+        insert into role (role_id, name)
+        values (#{role_id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cecsm.core.entity.Role" >
+        insert into role
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="role_id != null" >
+                role_id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="role_id != null" >
+                #{role_id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cecsm.core.entity.Role" >
+        update role
+        <set >
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where role_id = #{role_id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cecsm.core.entity.Role" >
+        update role
+        set name = #{name,jdbcType=VARCHAR}
+        where role_id = #{role_id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

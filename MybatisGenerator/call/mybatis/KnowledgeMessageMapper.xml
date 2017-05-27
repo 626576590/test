@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cecsm.core.mapper.KnowledgeMessageMapper" >
+    <resultMap id="BaseResultMap" type="com.cecsm.core.entity.KnowledgeMessage" >
+        <id column="message_id" property="message_id" jdbcType="BIGINT" />
+        <result column="patient_id" property="patient_id" jdbcType="BIGINT" />
+        <result column="mode" property="mode" jdbcType="INTEGER" />
+        <result column="sender" property="sender" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="send_time" property="send_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <resultMap id="ResultMapWithBLOBs" type="com.cecsm.core.entity.KnowledgeMessage" extends="BaseResultMap" >
+        <result column="identification" property="identification" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        message_id, patient_id, mode, sender, type, content, send_time
+    </sql>
+
+    <sql id="Blob_Column_List" >
+        identification
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        ,
+        <include refid="Blob_Column_List" />
+        from knowledge_message
+        where message_id = #{message_id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from knowledge_message
+        where message_id = #{message_id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.cecsm.core.entity.KnowledgeMessage" >
+        insert into knowledge_message (message_id, patient_id, mode, 
+            sender, type, content, 
+            send_time, identification)
+        values (#{message_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, #{mode,jdbcType=INTEGER}, 
+            #{sender,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+            #{send_time,jdbcType=TIMESTAMP}, #{identification,jdbcType=LONGVARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cecsm.core.entity.KnowledgeMessage" >
+        insert into knowledge_message
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="message_id != null" >
+                message_id,
+            </if>
+            <if test="patient_id != null" >
+                patient_id,
+            </if>
+            <if test="mode != null" >
+                mode,
+            </if>
+            <if test="sender != null" >
+                sender,
+            </if>
+            <if test="type != null" >
+                type,
+            </if>
+            <if test="content != null" >
+                content,
+            </if>
+            <if test="send_time != null" >
+                send_time,
+            </if>
+            <if test="identification != null" >
+                identification,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="message_id != null" >
+                #{message_id,jdbcType=BIGINT},
+            </if>
+            <if test="patient_id != null" >
+                #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="mode != null" >
+                #{mode,jdbcType=INTEGER},
+            </if>
+            <if test="sender != null" >
+                #{sender,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="content != null" >
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="send_time != null" >
+                #{send_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="identification != null" >
+                #{identification,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cecsm.core.entity.KnowledgeMessage" >
+        update knowledge_message
+        <set >
+            <if test="patient_id != null" >
+                patient_id = #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="mode != null" >
+                mode = #{mode,jdbcType=INTEGER},
+            </if>
+            <if test="sender != null" >
+                sender = #{sender,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="content != null" >
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="send_time != null" >
+                send_time = #{send_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="identification != null" >
+                identification = #{identification,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where message_id = #{message_id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cecsm.core.entity.KnowledgeMessage" >
+        update knowledge_message
+        set patient_id = #{patient_id,jdbcType=BIGINT},
+            mode = #{mode,jdbcType=INTEGER},
+            sender = #{sender,jdbcType=VARCHAR},
+            type = #{type,jdbcType=INTEGER},
+            content = #{content,jdbcType=VARCHAR},
+            send_time = #{send_time,jdbcType=TIMESTAMP},
+            identification = #{identification,jdbcType=LONGVARCHAR}
+        where message_id = #{message_id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cecsm.core.entity.KnowledgeMessage" >
+        update knowledge_message
+        set patient_id = #{patient_id,jdbcType=BIGINT},
+            mode = #{mode,jdbcType=INTEGER},
+            sender = #{sender,jdbcType=VARCHAR},
+            type = #{type,jdbcType=INTEGER},
+            content = #{content,jdbcType=VARCHAR},
+            send_time = #{send_time,jdbcType=TIMESTAMP}
+        where message_id = #{message_id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

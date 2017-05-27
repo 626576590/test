@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.els.dao.ApplyInfoMapper" >
+    <resultMap id="BaseResultMap" type="com.els.vo.ApplyInfo" >
+        <id column="elsAccount" property="elsAccount" jdbcType="VARCHAR" />
+        <id column="toElsAccount" property="toElsAccount" jdbcType="VARCHAR" />
+        <id column="applyNumber" property="applyNumber" jdbcType="VARCHAR" />
+        <result column="vender" property="vender" jdbcType="VARCHAR" />
+        <result column="companyShortName" property="companyShortName" jdbcType="VARCHAR" />
+        <result column="logtime" property="logtime" jdbcType="TIMESTAMP" />
+        <result column="logUser" property="logUser" jdbcType="VARCHAR" />
+        <result column="applyType" property="applyType" jdbcType="VARCHAR" />
+        <result column="applyStatus" property="applyStatus" jdbcType="VARCHAR" />
+        <result column="elsSubAccount" property="elsSubAccount" jdbcType="VARCHAR" />
+        <result column="person" property="person" jdbcType="VARCHAR" />
+        <result column="toElsSubAccount" property="toElsSubAccount" jdbcType="VARCHAR" />
+        <result column="toPerson" property="toPerson" jdbcType="VARCHAR" />
+        <result column="auditStatus" property="auditStatus" jdbcType="INTEGER" />
+        <result column="deleteStatus" property="deleteStatus" jdbcType="VARCHAR" />
+        <result column="frozenStatus" property="frozenStatus" jdbcType="VARCHAR" />
+        <result column="firstType" property="firstType" jdbcType="VARCHAR" />
+        <result column="companyCode" property="companyCode" jdbcType="VARCHAR" />
+        <result column="purchaseOrganization" property="purchaseOrganization" jdbcType="VARCHAR" />
+        <result column="supplierAccountGroup" property="supplierAccountGroup" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="sortValue" property="sortValue" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="postalCode" property="postalCode" jdbcType="VARCHAR" />
+        <result column="countryCode" property="countryCode" jdbcType="VARCHAR" />
+        <result column="province" property="province" jdbcType="VARCHAR" />
+        <result column="city" property="city" jdbcType="VARCHAR" />
+        <result column="telephone1" property="telephone1" jdbcType="VARCHAR" />
+        <result column="fax" property="fax" jdbcType="VARCHAR" />
+        <result column="telephone2" property="telephone2" jdbcType="VARCHAR" />
+        <result column="taxRate1" property="taxRate1" jdbcType="VARCHAR" />
+        <result column="texRate2" property="texRate2" jdbcType="VARCHAR" />
+        <result column="addedValueTaxNumber" property="addedValueTaxNumber" jdbcType="VARCHAR" />
+        <result column="industryCode" property="industryCode" jdbcType="VARCHAR" />
+        <result column="bankCountryCode" property="bankCountryCode" jdbcType="VARCHAR" />
+        <result column="bankCode" property="bankCode" jdbcType="VARCHAR" />
+        <result column="bankAccountCode" property="bankAccountCode" jdbcType="VARCHAR" />
+        <result column="bankAccountName" property="bankAccountName" jdbcType="VARCHAR" />
+        <result column="ledgerSubject" property="ledgerSubject" jdbcType="VARCHAR" />
+        <result column="payConditionCode" property="payConditionCode" jdbcType="VARCHAR" />
+        <result column="paymentList" property="paymentList" jdbcType="VARCHAR" />
+        <result column="currencyCode" property="currencyCode" jdbcType="VARCHAR" />
+        <result column="relationCalcGroup" property="relationCalcGroup" jdbcType="VARCHAR" />
+        <result column="receiptInvoiceIdentify" property="receiptInvoiceIdentify" jdbcType="VARCHAR" />
+        <result column="dutySaler" property="dutySaler" jdbcType="VARCHAR" />
+        <result column="currencyCode2" property="currencyCode2" jdbcType="VARCHAR" />
+        <result column="purchaseOrder" property="purchaseOrder" jdbcType="VARCHAR" />
+        <result column="purchaseGroup" property="purchaseGroup" jdbcType="VARCHAR" />
+        <result column="planDelivery" property="planDelivery" jdbcType="VARCHAR" />
+        <result column="abcIdentify" property="abcIdentify" jdbcType="VARCHAR" />
+        <result column="fbk1" property="fbk1" jdbcType="VARCHAR" />
+        <result column="fbk2" property="fbk2" jdbcType="VARCHAR" />
+        <result column="fbk3" property="fbk3" jdbcType="VARCHAR" />
+        <result column="fbk4" property="fbk4" jdbcType="VARCHAR" />
+        <result column="fbk5" property="fbk5" jdbcType="VARCHAR" />
+        <result column="fbk6" property="fbk6" jdbcType="VARCHAR" />
+        <result column="fbk7" property="fbk7" jdbcType="VARCHAR" />
+        <result column="fbk8" property="fbk8" jdbcType="VARCHAR" />
+        <result column="fbk9" property="fbk9" jdbcType="VARCHAR" />
+        <result column="fbk10" property="fbk10" jdbcType="VARCHAR" />
+        <result column="createUser" property="createUser" jdbcType="VARCHAR" />
+        <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="lastUpdateUser" property="lastUpdateUser" jdbcType="VARCHAR" />
+        <result column="lastUpdateDate" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="version" property="version" jdbcType="INTEGER" />
+        <result column="extendFields" property="extendFields" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        elsAccount, toElsAccount, applyNumber, vender, companyShortName, logtime, logUser, 
+        applyType, applyStatus, elsSubAccount, person, toElsSubAccount, toPerson, auditStatus, 
+        deleteStatus, frozenStatus, firstType, companyCode, purchaseOrganization, supplierAccountGroup, 
+        title, sortValue, address, postalCode, countryCode, province, city, telephone1, fax, 
+        telephone2, taxRate1, texRate2, addedValueTaxNumber, industryCode, bankCountryCode, 
+        bankCode, bankAccountCode, bankAccountName, ledgerSubject, payConditionCode, paymentList, 
+        currencyCode, relationCalcGroup, receiptInvoiceIdentify, dutySaler, currencyCode2, 
+        purchaseOrder, purchaseGroup, planDelivery, abcIdentify, fbk1, fbk2, fbk3, fbk4, 
+        fbk5, fbk6, fbk7, fbk8, fbk9, fbk10, createUser, createDate, lastUpdateUser, lastUpdateDate, 
+        remark, version, extendFields
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+        select 
+        <include refid="Base_Column_List" />
+        from apply_info
+        where elsAccount = #{elsAccount,jdbcType=VARCHAR}
+          and toElsAccount = #{toElsAccount,jdbcType=VARCHAR}
+          and applyNumber = #{applyNumber,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map" >
+        delete from apply_info
+        where elsAccount = #{elsAccount,jdbcType=VARCHAR}
+          and toElsAccount = #{toElsAccount,jdbcType=VARCHAR}
+          and applyNumber = #{applyNumber,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="com.els.vo.ApplyInfo" >
+        insert into apply_info (elsAccount, toElsAccount, applyNumber, 
+            vender, companyShortName, logtime, 
+            logUser, applyType, applyStatus, 
+            elsSubAccount, person, toElsSubAccount, 
+            toPerson, auditStatus, deleteStatus, 
+            frozenStatus, firstType, companyCode, 
+            purchaseOrganization, supplierAccountGroup, 
+            title, sortValue, address, 
+            postalCode, countryCode, province, 
+            city, telephone1, fax, 
+            telephone2, taxRate1, texRate2, 
+            addedValueTaxNumber, industryCode, bankCountryCode, 
+            bankCode, bankAccountCode, bankAccountName, 
+            ledgerSubject, payConditionCode, paymentList, 
+            currencyCode, relationCalcGroup, receiptInvoiceIdentify, 
+            dutySaler, currencyCode2, purchaseOrder, 
+            purchaseGroup, planDelivery, abcIdentify, 
+            fbk1, fbk2, fbk3, 
+            fbk4, fbk5, fbk6, 
+            fbk7, fbk8, fbk9, 
+            fbk10, createUser, createDate, 
+            lastUpdateUser, lastUpdateDate, remark, 
+            version, extendFields)
+        values (#{elsAccount,jdbcType=VARCHAR}, #{toElsAccount,jdbcType=VARCHAR}, #{applyNumber,jdbcType=VARCHAR}, 
+            #{vender,jdbcType=VARCHAR}, #{companyShortName,jdbcType=VARCHAR}, #{logtime,jdbcType=TIMESTAMP}, 
+            #{logUser,jdbcType=VARCHAR}, #{applyType,jdbcType=VARCHAR}, #{applyStatus,jdbcType=VARCHAR}, 
+            #{elsSubAccount,jdbcType=VARCHAR}, #{person,jdbcType=VARCHAR}, #{toElsSubAccount,jdbcType=VARCHAR}, 
+            #{toPerson,jdbcType=VARCHAR}, #{auditStatus,jdbcType=INTEGER}, #{deleteStatus,jdbcType=VARCHAR}, 
+            #{frozenStatus,jdbcType=VARCHAR}, #{firstType,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, 
+            #{purchaseOrganization,jdbcType=VARCHAR}, #{supplierAccountGroup,jdbcType=VARCHAR}, 
+            #{title,jdbcType=VARCHAR}, #{sortValue,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+            #{postalCode,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+            #{city,jdbcType=VARCHAR}, #{telephone1,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
+            #{telephone2,jdbcType=VARCHAR}, #{taxRate1,jdbcType=VARCHAR}, #{texRate2,jdbcType=VARCHAR}, 
+            #{addedValueTaxNumber,jdbcType=VARCHAR}, #{industryCode,jdbcType=VARCHAR}, #{bankCountryCode,jdbcType=VARCHAR}, 
+            #{bankCode,jdbcType=VARCHAR}, #{bankAccountCode,jdbcType=VARCHAR}, #{bankAccountName,jdbcType=VARCHAR}, 
+            #{ledgerSubject,jdbcType=VARCHAR}, #{payConditionCode,jdbcType=VARCHAR}, #{paymentList,jdbcType=VARCHAR}, 
+            #{currencyCode,jdbcType=VARCHAR}, #{relationCalcGroup,jdbcType=VARCHAR}, #{receiptInvoiceIdentify,jdbcType=VARCHAR}, 
+            #{dutySaler,jdbcType=VARCHAR}, #{currencyCode2,jdbcType=VARCHAR}, #{purchaseOrder,jdbcType=VARCHAR}, 
+            #{purchaseGroup,jdbcType=VARCHAR}, #{planDelivery,jdbcType=VARCHAR}, #{abcIdentify,jdbcType=VARCHAR}, 
+            #{fbk1,jdbcType=VARCHAR}, #{fbk2,jdbcType=VARCHAR}, #{fbk3,jdbcType=VARCHAR}, 
+            #{fbk4,jdbcType=VARCHAR}, #{fbk5,jdbcType=VARCHAR}, #{fbk6,jdbcType=VARCHAR}, 
+            #{fbk7,jdbcType=VARCHAR}, #{fbk8,jdbcType=VARCHAR}, #{fbk9,jdbcType=VARCHAR}, 
+            #{fbk10,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+            #{lastUpdateUser,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+            #{version,jdbcType=INTEGER}, #{extendFields,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.els.vo.ApplyInfo" >
+        insert into apply_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="elsAccount != null" >
+                elsAccount,
+            </if>
+            <if test="toElsAccount != null" >
+                toElsAccount,
+            </if>
+            <if test="applyNumber != null" >
+                applyNumber,
+            </if>
+            <if test="vender != null" >
+                vender,
+            </if>
+            <if test="companyShortName != null" >
+                companyShortName,
+            </if>
+            <if test="logtime != null" >
+                logtime,
+            </if>
+            <if test="logUser != null" >
+                logUser,
+            </if>
+            <if test="applyType != null" >
+                applyType,
+            </if>
+            <if test="applyStatus != null" >
+                applyStatus,
+            </if>
+            <if test="elsSubAccount != null" >
+                elsSubAccount,
+            </if>
+            <if test="person != null" >
+                person,
+            </if>
+            <if test="toElsSubAccount != null" >
+                toElsSubAccount,
+            </if>
+            <if test="toPerson != null" >
+                toPerson,
+            </if>
+            <if test="auditStatus != null" >
+                auditStatus,
+            </if>
+            <if test="deleteStatus != null" >
+                deleteStatus,
+            </if>
+            <if test="frozenStatus != null" >
+                frozenStatus,
+            </if>
+            <if test="firstType != null" >
+                firstType,
+            </if>
+            <if test="companyCode != null" >
+                companyCode,
+            </if>
+            <if test="purchaseOrganization != null" >
+                purchaseOrganization,
+            </if>
+            <if test="supplierAccountGroup != null" >
+                supplierAccountGroup,
+            </if>
+            <if test="title != null" >
+                title,
+            </if>
+            <if test="sortValue != null" >
+                sortValue,
+            </if>
+            <if test="address != null" >
+                address,
+            </if>
+            <if test="postalCode != null" >
+                postalCode,
+            </if>
+            <if test="countryCode != null" >
+                countryCode,
+            </if>
+            <if test="province != null" >
+                province,
+            </if>
+            <if test="city != null" >
+                city,
+            </if>
+            <if test="telephone1 != null" >
+                telephone1,
+            </if>
+            <if test="fax != null" >
+                fax,
+            </if>
+            <if test="telephone2 != null" >
+                telephone2,
+            </if>
+            <if test="taxRate1 != null" >
+                taxRate1,
+            </if>
+            <if test="texRate2 != null" >
+                texRate2,
+            </if>
+            <if test="addedValueTaxNumber != null" >
+                addedValueTaxNumber,
+            </if>
+            <if test="industryCode != null" >
+                industryCode,
+            </if>
+            <if test="bankCountryCode != null" >
+                bankCountryCode,
+            </if>
+            <if test="bankCode != null" >
+                bankCode,
+            </if>
+            <if test="bankAccountCode != null" >
+                bankAccountCode,
+            </if>
+            <if test="bankAccountName != null" >
+                bankAccountName,
+            </if>
+            <if test="ledgerSubject != null" >
+                ledgerSubject,
+            </if>
+            <if test="payConditionCode != null" >
+                payConditionCode,
+            </if>
+            <if test="paymentList != null" >
+                paymentList,
+            </if>
+            <if test="currencyCode != null" >
+                currencyCode,
+            </if>
+            <if test="relationCalcGroup != null" >
+                relationCalcGroup,
+            </if>
+            <if test="receiptInvoiceIdentify != null" >
+                receiptInvoiceIdentify,
+            </if>
+            <if test="dutySaler != null" >
+                dutySaler,
+            </if>
+            <if test="currencyCode2 != null" >
+                currencyCode2,
+            </if>
+            <if test="purchaseOrder != null" >
+                purchaseOrder,
+            </if>
+            <if test="purchaseGroup != null" >
+                purchaseGroup,
+            </if>
+            <if test="planDelivery != null" >
+                planDelivery,
+            </if>
+            <if test="abcIdentify != null" >
+                abcIdentify,
+            </if>
+            <if test="fbk1 != null" >
+                fbk1,
+            </if>
+            <if test="fbk2 != null" >
+                fbk2,
+            </if>
+            <if test="fbk3 != null" >
+                fbk3,
+            </if>
+            <if test="fbk4 != null" >
+                fbk4,
+            </if>
+            <if test="fbk5 != null" >
+                fbk5,
+            </if>
+            <if test="fbk6 != null" >
+                fbk6,
+            </if>
+            <if test="fbk7 != null" >
+                fbk7,
+            </if>
+            <if test="fbk8 != null" >
+                fbk8,
+            </if>
+            <if test="fbk9 != null" >
+                fbk9,
+            </if>
+            <if test="fbk10 != null" >
+                fbk10,
+            </if>
+            <if test="createUser != null" >
+                createUser,
+            </if>
+            <if test="createDate != null" >
+                createDate,
+            </if>
+            <if test="lastUpdateUser != null" >
+                lastUpdateUser,
+            </if>
+            <if test="lastUpdateDate != null" >
+                lastUpdateDate,
+            </if>
+            <if test="remark != null" >
+                remark,
+            </if>
+            <if test="version != null" >
+                version,
+            </if>
+            <if test="extendFields != null" >
+                extendFields,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="elsAccount != null" >
+                #{elsAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="toElsAccount != null" >
+                #{toElsAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="applyNumber != null" >
+                #{applyNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="vender != null" >
+                #{vender,jdbcType=VARCHAR},
+            </if>
+            <if test="companyShortName != null" >
+                #{companyShortName,jdbcType=VARCHAR},
+            </if>
+            <if test="logtime != null" >
+                #{logtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="logUser != null" >
+                #{logUser,jdbcType=VARCHAR},
+            </if>
+            <if test="applyType != null" >
+                #{applyType,jdbcType=VARCHAR},
+            </if>
+            <if test="applyStatus != null" >
+                #{applyStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="elsSubAccount != null" >
+                #{elsSubAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="person != null" >
+                #{person,jdbcType=VARCHAR},
+            </if>
+            <if test="toElsSubAccount != null" >
+                #{toElsSubAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="toPerson != null" >
+                #{toPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="auditStatus != null" >
+                #{auditStatus,jdbcType=INTEGER},
+            </if>
+            <if test="deleteStatus != null" >
+                #{deleteStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="frozenStatus != null" >
+                #{frozenStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="firstType != null" >
+                #{firstType,jdbcType=VARCHAR},
+            </if>
+            <if test="companyCode != null" >
+                #{companyCode,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseOrganization != null" >
+                #{purchaseOrganization,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierAccountGroup != null" >
+                #{supplierAccountGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null" >
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="sortValue != null" >
+                #{sortValue,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="postalCode != null" >
+                #{postalCode,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCode != null" >
+                #{countryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null" >
+                #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null" >
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone1 != null" >
+                #{telephone1,jdbcType=VARCHAR},
+            </if>
+            <if test="fax != null" >
+                #{fax,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone2 != null" >
+                #{telephone2,jdbcType=VARCHAR},
+            </if>
+            <if test="taxRate1 != null" >
+                #{taxRate1,jdbcType=VARCHAR},
+            </if>
+            <if test="texRate2 != null" >
+                #{texRate2,jdbcType=VARCHAR},
+            </if>
+            <if test="addedValueTaxNumber != null" >
+                #{addedValueTaxNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="industryCode != null" >
+                #{industryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="bankCountryCode != null" >
+                #{bankCountryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="bankCode != null" >
+                #{bankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountCode != null" >
+                #{bankAccountCode,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountName != null" >
+                #{bankAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="ledgerSubject != null" >
+                #{ledgerSubject,jdbcType=VARCHAR},
+            </if>
+            <if test="payConditionCode != null" >
+                #{payConditionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentList != null" >
+                #{paymentList,jdbcType=VARCHAR},
+            </if>
+            <if test="currencyCode != null" >
+                #{currencyCode,jdbcType=VARCHAR},
+            </if>
+            <if test="relationCalcGroup != null" >
+                #{relationCalcGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="receiptInvoiceIdentify != null" >
+                #{receiptInvoiceIdentify,jdbcType=VARCHAR},
+            </if>
+            <if test="dutySaler != null" >
+                #{dutySaler,jdbcType=VARCHAR},
+            </if>
+            <if test="currencyCode2 != null" >
+                #{currencyCode2,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseOrder != null" >
+                #{purchaseOrder,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseGroup != null" >
+                #{purchaseGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="planDelivery != null" >
+                #{planDelivery,jdbcType=VARCHAR},
+            </if>
+            <if test="abcIdentify != null" >
+                #{abcIdentify,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk1 != null" >
+                #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                #{fbk5,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk6 != null" >
+                #{fbk6,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk7 != null" >
+                #{fbk7,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk8 != null" >
+                #{fbk8,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk9 != null" >
+                #{fbk9,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk10 != null" >
+                #{fbk10,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUser != null" >
+                #{lastUpdateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null" >
+                #{lastUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null" >
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null" >
+                #{version,jdbcType=INTEGER},
+            </if>
+            <if test="extendFields != null" >
+                #{extendFields,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.els.vo.ApplyInfo" >
+        update apply_info
+        <set >
+            <if test="vender != null" >
+                vender = #{vender,jdbcType=VARCHAR},
+            </if>
+            <if test="companyShortName != null" >
+                companyShortName = #{companyShortName,jdbcType=VARCHAR},
+            </if>
+            <if test="logtime != null" >
+                logtime = #{logtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="logUser != null" >
+                logUser = #{logUser,jdbcType=VARCHAR},
+            </if>
+            <if test="applyType != null" >
+                applyType = #{applyType,jdbcType=VARCHAR},
+            </if>
+            <if test="applyStatus != null" >
+                applyStatus = #{applyStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="elsSubAccount != null" >
+                elsSubAccount = #{elsSubAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="person != null" >
+                person = #{person,jdbcType=VARCHAR},
+            </if>
+            <if test="toElsSubAccount != null" >
+                toElsSubAccount = #{toElsSubAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="toPerson != null" >
+                toPerson = #{toPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="auditStatus != null" >
+                auditStatus = #{auditStatus,jdbcType=INTEGER},
+            </if>
+            <if test="deleteStatus != null" >
+                deleteStatus = #{deleteStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="frozenStatus != null" >
+                frozenStatus = #{frozenStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="firstType != null" >
+                firstType = #{firstType,jdbcType=VARCHAR},
+            </if>
+            <if test="companyCode != null" >
+                companyCode = #{companyCode,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseOrganization != null" >
+                purchaseOrganization = #{purchaseOrganization,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierAccountGroup != null" >
+                supplierAccountGroup = #{supplierAccountGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null" >
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="sortValue != null" >
+                sortValue = #{sortValue,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="postalCode != null" >
+                postalCode = #{postalCode,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCode != null" >
+                countryCode = #{countryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null" >
+                province = #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null" >
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone1 != null" >
+                telephone1 = #{telephone1,jdbcType=VARCHAR},
+            </if>
+            <if test="fax != null" >
+                fax = #{fax,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone2 != null" >
+                telephone2 = #{telephone2,jdbcType=VARCHAR},
+            </if>
+            <if test="taxRate1 != null" >
+                taxRate1 = #{taxRate1,jdbcType=VARCHAR},
+            </if>
+            <if test="texRate2 != null" >
+                texRate2 = #{texRate2,jdbcType=VARCHAR},
+            </if>
+            <if test="addedValueTaxNumber != null" >
+                addedValueTaxNumber = #{addedValueTaxNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="industryCode != null" >
+                industryCode = #{industryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="bankCountryCode != null" >
+                bankCountryCode = #{bankCountryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="bankCode != null" >
+                bankCode = #{bankCode,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountCode != null" >
+                bankAccountCode = #{bankAccountCode,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountName != null" >
+                bankAccountName = #{bankAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="ledgerSubject != null" >
+                ledgerSubject = #{ledgerSubject,jdbcType=VARCHAR},
+            </if>
+            <if test="payConditionCode != null" >
+                payConditionCode = #{payConditionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentList != null" >
+                paymentList = #{paymentList,jdbcType=VARCHAR},
+            </if>
+            <if test="currencyCode != null" >
+                currencyCode = #{currencyCode,jdbcType=VARCHAR},
+            </if>
+            <if test="relationCalcGroup != null" >
+                relationCalcGroup = #{relationCalcGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="receiptInvoiceIdentify != null" >
+                receiptInvoiceIdentify = #{receiptInvoiceIdentify,jdbcType=VARCHAR},
+            </if>
+            <if test="dutySaler != null" >
+                dutySaler = #{dutySaler,jdbcType=VARCHAR},
+            </if>
+            <if test="currencyCode2 != null" >
+                currencyCode2 = #{currencyCode2,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseOrder != null" >
+                purchaseOrder = #{purchaseOrder,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseGroup != null" >
+                purchaseGroup = #{purchaseGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="planDelivery != null" >
+                planDelivery = #{planDelivery,jdbcType=VARCHAR},
+            </if>
+            <if test="abcIdentify != null" >
+                abcIdentify = #{abcIdentify,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk1 != null" >
+                fbk1 = #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                fbk2 = #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                fbk3 = #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                fbk4 = #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                fbk5 = #{fbk5,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk6 != null" >
+                fbk6 = #{fbk6,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk7 != null" >
+                fbk7 = #{fbk7,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk8 != null" >
+                fbk8 = #{fbk8,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk9 != null" >
+                fbk9 = #{fbk9,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk10 != null" >
+                fbk10 = #{fbk10,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                createUser = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                createDate = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUser != null" >
+                lastUpdateUser = #{lastUpdateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null" >
+                lastUpdateDate = #{lastUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null" >
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null" >
+                version = #{version,jdbcType=INTEGER},
+            </if>
+            <if test="extendFields != null" >
+                extendFields = #{extendFields,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where elsAccount = #{elsAccount,jdbcType=VARCHAR}
+          and toElsAccount = #{toElsAccount,jdbcType=VARCHAR}
+          and applyNumber = #{applyNumber,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.els.vo.ApplyInfo" >
+        update apply_info
+        set vender = #{vender,jdbcType=VARCHAR},
+            companyShortName = #{companyShortName,jdbcType=VARCHAR},
+            logtime = #{logtime,jdbcType=TIMESTAMP},
+            logUser = #{logUser,jdbcType=VARCHAR},
+            applyType = #{applyType,jdbcType=VARCHAR},
+            applyStatus = #{applyStatus,jdbcType=VARCHAR},
+            elsSubAccount = #{elsSubAccount,jdbcType=VARCHAR},
+            person = #{person,jdbcType=VARCHAR},
+            toElsSubAccount = #{toElsSubAccount,jdbcType=VARCHAR},
+            toPerson = #{toPerson,jdbcType=VARCHAR},
+            auditStatus = #{auditStatus,jdbcType=INTEGER},
+            deleteStatus = #{deleteStatus,jdbcType=VARCHAR},
+            frozenStatus = #{frozenStatus,jdbcType=VARCHAR},
+            firstType = #{firstType,jdbcType=VARCHAR},
+            companyCode = #{companyCode,jdbcType=VARCHAR},
+            purchaseOrganization = #{purchaseOrganization,jdbcType=VARCHAR},
+            supplierAccountGroup = #{supplierAccountGroup,jdbcType=VARCHAR},
+            title = #{title,jdbcType=VARCHAR},
+            sortValue = #{sortValue,jdbcType=VARCHAR},
+            address = #{address,jdbcType=VARCHAR},
+            postalCode = #{postalCode,jdbcType=VARCHAR},
+            countryCode = #{countryCode,jdbcType=VARCHAR},
+            province = #{province,jdbcType=VARCHAR},
+            city = #{city,jdbcType=VARCHAR},
+            telephone1 = #{telephone1,jdbcType=VARCHAR},
+            fax = #{fax,jdbcType=VARCHAR},
+            telephone2 = #{telephone2,jdbcType=VARCHAR},
+            taxRate1 = #{taxRate1,jdbcType=VARCHAR},
+            texRate2 = #{texRate2,jdbcType=VARCHAR},
+            addedValueTaxNumber = #{addedValueTaxNumber,jdbcType=VARCHAR},
+            industryCode = #{industryCode,jdbcType=VARCHAR},
+            bankCountryCode = #{bankCountryCode,jdbcType=VARCHAR},
+            bankCode = #{bankCode,jdbcType=VARCHAR},
+            bankAccountCode = #{bankAccountCode,jdbcType=VARCHAR},
+            bankAccountName = #{bankAccountName,jdbcType=VARCHAR},
+            ledgerSubject = #{ledgerSubject,jdbcType=VARCHAR},
+            payConditionCode = #{payConditionCode,jdbcType=VARCHAR},
+            paymentList = #{paymentList,jdbcType=VARCHAR},
+            currencyCode = #{currencyCode,jdbcType=VARCHAR},
+            relationCalcGroup = #{relationCalcGroup,jdbcType=VARCHAR},
+            receiptInvoiceIdentify = #{receiptInvoiceIdentify,jdbcType=VARCHAR},
+            dutySaler = #{dutySaler,jdbcType=VARCHAR},
+            currencyCode2 = #{currencyCode2,jdbcType=VARCHAR},
+            purchaseOrder = #{purchaseOrder,jdbcType=VARCHAR},
+            purchaseGroup = #{purchaseGroup,jdbcType=VARCHAR},
+            planDelivery = #{planDelivery,jdbcType=VARCHAR},
+            abcIdentify = #{abcIdentify,jdbcType=VARCHAR},
+            fbk1 = #{fbk1,jdbcType=VARCHAR},
+            fbk2 = #{fbk2,jdbcType=VARCHAR},
+            fbk3 = #{fbk3,jdbcType=VARCHAR},
+            fbk4 = #{fbk4,jdbcType=VARCHAR},
+            fbk5 = #{fbk5,jdbcType=VARCHAR},
+            fbk6 = #{fbk6,jdbcType=VARCHAR},
+            fbk7 = #{fbk7,jdbcType=VARCHAR},
+            fbk8 = #{fbk8,jdbcType=VARCHAR},
+            fbk9 = #{fbk9,jdbcType=VARCHAR},
+            fbk10 = #{fbk10,jdbcType=VARCHAR},
+            createUser = #{createUser,jdbcType=VARCHAR},
+            createDate = #{createDate,jdbcType=TIMESTAMP},
+            lastUpdateUser = #{lastUpdateUser,jdbcType=VARCHAR},
+            lastUpdateDate = #{lastUpdateDate,jdbcType=TIMESTAMP},
+            remark = #{remark,jdbcType=VARCHAR},
+            version = #{version,jdbcType=INTEGER},
+            extendFields = #{extendFields,jdbcType=VARCHAR}
+        where elsAccount = #{elsAccount,jdbcType=VARCHAR}
+          and toElsAccount = #{toElsAccount,jdbcType=VARCHAR}
+          and applyNumber = #{applyNumber,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

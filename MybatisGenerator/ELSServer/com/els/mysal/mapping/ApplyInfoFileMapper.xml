@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.els.dao.ApplyInfoFileMapper" >
+    <resultMap id="BaseResultMap" type="com.els.vo.ApplyInfoFile" >
+        <id column="elsAccount" property="elsAccount" jdbcType="VARCHAR" />
+        <id column="toElsAccount" property="toElsAccount" jdbcType="VARCHAR" />
+        <id column="fileNumber" property="fileNumber" jdbcType="VARCHAR" />
+        <result column="fileType" property="fileType" jdbcType="VARCHAR" />
+        <result column="fileName" property="fileName" jdbcType="VARCHAR" />
+        <result column="filePath" property="filePath" jdbcType="VARCHAR" />
+        <result column="createUser" property="createUser" jdbcType="VARCHAR" />
+        <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="lastUpdateUser" property="lastUpdateUser" jdbcType="VARCHAR" />
+        <result column="lastUpdateDate" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+        <result column="fbk1" property="fbk1" jdbcType="VARCHAR" />
+        <result column="fbk2" property="fbk2" jdbcType="VARCHAR" />
+        <result column="fbk3" property="fbk3" jdbcType="VARCHAR" />
+        <result column="fbk4" property="fbk4" jdbcType="VARCHAR" />
+        <result column="fbk5" property="fbk5" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        elsAccount, toElsAccount, fileNumber, fileType, fileName, filePath, createUser, createDate, 
+        lastUpdateUser, lastUpdateDate, fbk1, fbk2, fbk3, fbk4, fbk5
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+        select 
+        <include refid="Base_Column_List" />
+        from apply_info_file
+        where elsAccount = #{elsAccount,jdbcType=VARCHAR}
+          and toElsAccount = #{toElsAccount,jdbcType=VARCHAR}
+          and fileNumber = #{fileNumber,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="map" >
+        delete from apply_info_file
+        where elsAccount = #{elsAccount,jdbcType=VARCHAR}
+          and toElsAccount = #{toElsAccount,jdbcType=VARCHAR}
+          and fileNumber = #{fileNumber,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="com.els.vo.ApplyInfoFile" >
+        insert into apply_info_file (elsAccount, toElsAccount, fileNumber, 
+            fileType, fileName, filePath, 
+            createUser, createDate, lastUpdateUser, 
+            lastUpdateDate, fbk1, fbk2, 
+            fbk3, fbk4, fbk5)
+        values (#{elsAccount,jdbcType=VARCHAR}, #{toElsAccount,jdbcType=VARCHAR}, #{fileNumber,jdbcType=VARCHAR}, 
+            #{fileType,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, 
+            #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{lastUpdateUser,jdbcType=VARCHAR}, 
+            #{lastUpdateDate,jdbcType=TIMESTAMP}, #{fbk1,jdbcType=VARCHAR}, #{fbk2,jdbcType=VARCHAR}, 
+            #{fbk3,jdbcType=VARCHAR}, #{fbk4,jdbcType=VARCHAR}, #{fbk5,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.els.vo.ApplyInfoFile" >
+        insert into apply_info_file
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="elsAccount != null" >
+                elsAccount,
+            </if>
+            <if test="toElsAccount != null" >
+                toElsAccount,
+            </if>
+            <if test="fileNumber != null" >
+                fileNumber,
+            </if>
+            <if test="fileType != null" >
+                fileType,
+            </if>
+            <if test="fileName != null" >
+                fileName,
+            </if>
+            <if test="filePath != null" >
+                filePath,
+            </if>
+            <if test="createUser != null" >
+                createUser,
+            </if>
+            <if test="createDate != null" >
+                createDate,
+            </if>
+            <if test="lastUpdateUser != null" >
+                lastUpdateUser,
+            </if>
+            <if test="lastUpdateDate != null" >
+                lastUpdateDate,
+            </if>
+            <if test="fbk1 != null" >
+                fbk1,
+            </if>
+            <if test="fbk2 != null" >
+                fbk2,
+            </if>
+            <if test="fbk3 != null" >
+                fbk3,
+            </if>
+            <if test="fbk4 != null" >
+                fbk4,
+            </if>
+            <if test="fbk5 != null" >
+                fbk5,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="elsAccount != null" >
+                #{elsAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="toElsAccount != null" >
+                #{toElsAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="fileNumber != null" >
+                #{fileNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="fileType != null" >
+                #{fileType,jdbcType=VARCHAR},
+            </if>
+            <if test="fileName != null" >
+                #{fileName,jdbcType=VARCHAR},
+            </if>
+            <if test="filePath != null" >
+                #{filePath,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUser != null" >
+                #{lastUpdateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null" >
+                #{lastUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fbk1 != null" >
+                #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                #{fbk5,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.els.vo.ApplyInfoFile" >
+        update apply_info_file
+        <set >
+            <if test="fileType != null" >
+                fileType = #{fileType,jdbcType=VARCHAR},
+            </if>
+            <if test="fileName != null" >
+                fileName = #{fileName,jdbcType=VARCHAR},
+            </if>
+            <if test="filePath != null" >
+                filePath = #{filePath,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                createUser = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                createDate = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUser != null" >
+                lastUpdateUser = #{lastUpdateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateDate != null" >
+                lastUpdateDate = #{lastUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fbk1 != null" >
+                fbk1 = #{fbk1,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk2 != null" >
+                fbk2 = #{fbk2,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk3 != null" >
+                fbk3 = #{fbk3,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk4 != null" >
+                fbk4 = #{fbk4,jdbcType=VARCHAR},
+            </if>
+            <if test="fbk5 != null" >
+                fbk5 = #{fbk5,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where elsAccount = #{elsAccount,jdbcType=VARCHAR}
+          and toElsAccount = #{toElsAccount,jdbcType=VARCHAR}
+          and fileNumber = #{fileNumber,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.els.vo.ApplyInfoFile" >
+        update apply_info_file
+        set fileType = #{fileType,jdbcType=VARCHAR},
+            fileName = #{fileName,jdbcType=VARCHAR},
+            filePath = #{filePath,jdbcType=VARCHAR},
+            createUser = #{createUser,jdbcType=VARCHAR},
+            createDate = #{createDate,jdbcType=TIMESTAMP},
+            lastUpdateUser = #{lastUpdateUser,jdbcType=VARCHAR},
+            lastUpdateDate = #{lastUpdateDate,jdbcType=TIMESTAMP},
+            fbk1 = #{fbk1,jdbcType=VARCHAR},
+            fbk2 = #{fbk2,jdbcType=VARCHAR},
+            fbk3 = #{fbk3,jdbcType=VARCHAR},
+            fbk4 = #{fbk4,jdbcType=VARCHAR},
+            fbk5 = #{fbk5,jdbcType=VARCHAR}
+        where elsAccount = #{elsAccount,jdbcType=VARCHAR}
+          and toElsAccount = #{toElsAccount,jdbcType=VARCHAR}
+          and fileNumber = #{fileNumber,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

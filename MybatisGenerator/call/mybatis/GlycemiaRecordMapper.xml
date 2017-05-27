@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cecsm.core.mapper.GlycemiaRecordMapper" >
+    <resultMap id="BaseResultMap" type="com.cecsm.core.entity.GlycemiaRecord" >
+        <id column="record_id" property="record_id" jdbcType="BIGINT" />
+        <result column="patient_id" property="patient_id" jdbcType="BIGINT" />
+        <result column="measure_test" property="measure_test" jdbcType="VARCHAR" />
+        <result column="estimate" property="estimate" jdbcType="VARCHAR" />
+        <result column="time_interval" property="time_interval" jdbcType="INTEGER" />
+        <result column="measure_time" property="measure_time" jdbcType="TIMESTAMP" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        record_id, patient_id, measure_test, estimate, time_interval, measure_time, create_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from glycemia_record
+        where record_id = #{record_id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from glycemia_record
+        where record_id = #{record_id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.cecsm.core.entity.GlycemiaRecord" >
+        insert into glycemia_record (record_id, patient_id, measure_test, 
+            estimate, time_interval, measure_time, 
+            create_time)
+        values (#{record_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, #{measure_test,jdbcType=VARCHAR}, 
+            #{estimate,jdbcType=VARCHAR}, #{time_interval,jdbcType=INTEGER}, #{measure_time,jdbcType=TIMESTAMP}, 
+            #{create_time,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cecsm.core.entity.GlycemiaRecord" >
+        insert into glycemia_record
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="record_id != null" >
+                record_id,
+            </if>
+            <if test="patient_id != null" >
+                patient_id,
+            </if>
+            <if test="measure_test != null" >
+                measure_test,
+            </if>
+            <if test="estimate != null" >
+                estimate,
+            </if>
+            <if test="time_interval != null" >
+                time_interval,
+            </if>
+            <if test="measure_time != null" >
+                measure_time,
+            </if>
+            <if test="create_time != null" >
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="record_id != null" >
+                #{record_id,jdbcType=BIGINT},
+            </if>
+            <if test="patient_id != null" >
+                #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="measure_test != null" >
+                #{measure_test,jdbcType=VARCHAR},
+            </if>
+            <if test="estimate != null" >
+                #{estimate,jdbcType=VARCHAR},
+            </if>
+            <if test="time_interval != null" >
+                #{time_interval,jdbcType=INTEGER},
+            </if>
+            <if test="measure_time != null" >
+                #{measure_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="create_time != null" >
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cecsm.core.entity.GlycemiaRecord" >
+        update glycemia_record
+        <set >
+            <if test="patient_id != null" >
+                patient_id = #{patient_id,jdbcType=BIGINT},
+            </if>
+            <if test="measure_test != null" >
+                measure_test = #{measure_test,jdbcType=VARCHAR},
+            </if>
+            <if test="estimate != null" >
+                estimate = #{estimate,jdbcType=VARCHAR},
+            </if>
+            <if test="time_interval != null" >
+                time_interval = #{time_interval,jdbcType=INTEGER},
+            </if>
+            <if test="measure_time != null" >
+                measure_time = #{measure_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="create_time != null" >
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where record_id = #{record_id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cecsm.core.entity.GlycemiaRecord" >
+        update glycemia_record
+        set patient_id = #{patient_id,jdbcType=BIGINT},
+            measure_test = #{measure_test,jdbcType=VARCHAR},
+            estimate = #{estimate,jdbcType=VARCHAR},
+            time_interval = #{time_interval,jdbcType=INTEGER},
+            measure_time = #{measure_time,jdbcType=TIMESTAMP},
+            create_time = #{create_time,jdbcType=TIMESTAMP}
+        where record_id = #{record_id,jdbcType=BIGINT}
+    </update>
+
+</mapper>
